@@ -87,43 +87,40 @@ class Circle(object):  # New-style class. Inheritance from object.
     def __repr__(self):
         return '%s(%r)' % (self.__class__.__name__, self.radius)
 
+    # Reprogram dot to NOT bind "self".
+    # Use case: add regular functions to class
+    # (solve human factors find-ability problem)
+    @staticmethod
     def angle_to_grade(angle):
         "Convert an inclinometer reading in degrees to percent grade."
         return math.tan(math.radians(angle)) * 100.0
 
-    # Reprogram dot to NOT bind "self".
-    # Use case: add regular functions to class
-    # (solve human factors find-ability problem)
-    angle_to_grade = staticmethod(angle_to_grade)
+    # angle_to_grade = staticmethod(angle_to_grade)
+    # ^-- replaced by "@staticmethod" syntax
 
+    # Reprogram dot to add "cls" as first argument, type(self).
+    # Use case: add alternative constructors.
+    @classmethod
     def from_bbd(cls, bbd):
         "Create a new circle from bounding box diagonal."
         radius = bbd / 2.0 / math.sqrt(2.0)
         return cls(radius)
 
-    # Reprogram dot to add "cls" as first argument, type(self).
-    # Use case: add alternative constructors.
-    from_bbd = classmethod(from_bbd)
+    # from_bbd = classmethod(from_bbd)
+    # ^-- replaced by "@classmethod" syntax
 
-    # Cry! Cry! Cry!
-    # Fairy God Mother
-
-    def get_radius(self):
-        return self.diameter / 2.0
-
-    def set_radius(self, radius):
-        self.diameter = radius * 2.0
-
-    """ I wish, I wish that EVERYWHERE someone wrote c.radius that MAGICALLY
-        c.get_radius() would be called without me changing ANY code
-        (including my own), AND I wish that EVERYWHERE someone set
-        c.radius = value that MAGICALLY c.set_radius(value) would be
-        called without me changging ANY code (including my own)
-
-    """
     # Reprogram the dot to convert attribute to method call.
     # Use case: c.radius becomes c.get_radius()
-    radius = property(get_radius, set_radius)
+    @property
+    def radius(self):
+        return self.diameter / 2.0
+
+    @radius.setter
+    def radius(self, radius):
+        self.diameter = radius * 2.0
+
+    # radius = property(get_radius, set_radius)
+    # ^-- replaced by "@property" and "@radius.setter" syntax
     
 
 
