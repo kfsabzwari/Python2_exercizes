@@ -1,4 +1,4 @@
-"""Namespaces in Pythn
+"""Namespaces in Python
 
 Only three ways to create a new namespace in Python:
 
@@ -75,3 +75,64 @@ print 'Dir of e:'
 pprint(dir(e))
 print e.f
 e.g()
+
+print '###########################################################'
+print '=, def, class, import'
+
+def f(x):
+    y = x ** 2
+    def g(z):
+        pass
+    class T:
+        pass
+    import random
+    print 'Locals in f:'
+    pprint(locals())
+
+f(5)
+
+print '###########################################################'
+print 'assign in class'
+
+class Foo(object):
+    bar = 1
+
+    def get_bar(self):
+        return Foo.bar  # bar --> NameError
+
+f = Foo()
+print 'bar:', f.get_bar()
+
+print '###########################################################'
+print 'Inheritance'
+
+class I(E):
+    j = 6
+
+    def g(self):
+        k = 7
+        print 'Locals in I.g:', locals()
+
+i = I(7)
+print i.j
+print i.f
+i.g()
+E.g(i)
+print type(i)
+print i.__class__
+print type(i).__bases__
+print type(i).mro()
+
+
+
+
+
+
+
+
+
+
+
+
+
+

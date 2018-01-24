@@ -1,0 +1,1550 @@
+Python 2.7.14 (default, Sep 22 2017, 00:05:22) 
+[GCC 4.2.1 Compatible Apple LLVM 7.3.0 (clang-703.0.31)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/looping_idioms.py =======
+>>> print names
+['grant', 'shannon', 'bethany', 'mark']
+>>> print colors
+['orange', 'green', 'pink']
+>>> print cities
+['austin', 'dallas', 'chicago', 'dallas', 'austin', 'chicago']
+>>> type(names)
+<type 'list'>
+>>> type(names[0])
+<type 'str'>
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/looping_idioms.py =======
+Task: show the colors in uppercase
+ORANGE
+GREEN
+PINK
+>>> len(colors)
+3
+>>> range(len(colors))
+[0, 1, 2]
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/looping_idioms.py =======
+Task: show the colors in uppercase
+ORANGE
+GREEN
+PINK
+ORANGE
+GREEN
+PINK
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/looping_idioms.py =======
+Task: show the colors in uppercase
+ORANGE
+GREEN
+PINK
+ORANGE
+GREEN
+PINK
+
+Task: show the names with index of each name
+1 -> grant
+2 -> shannon
+3 -> bethany
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/looping_idioms.py =======
+Task: show the colors in uppercase
+ORANGE
+GREEN
+PINK
+ORANGE
+GREEN
+PINK
+
+Task: show the names with index of each name
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/looping_idioms.py =======
+Task: show the colors in uppercase
+ORANGE
+GREEN
+PINK
+ORANGE
+GREEN
+PINK
+
+Task: show the names with index of each name
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+0 -> grant
+1 -> shannon
+2 -> bethany
+3 -> mark
+>>> help(enumerate)
+Help on class enumerate in module __builtin__:
+
+class enumerate(object)
+ |  enumerate(iterable[, start]) -> iterator for index, value of iterable
+ |  
+ |  Return an enumerate object.  iterable must be another object that supports
+ |  iteration.  The enumerate object yields pairs containing a count (from
+ |  start, which defaults to zero) and a value yielded by the iterable argument.
+ |  enumerate is useful for obtaining an indexed list:
+ |      (0, seq[0]), (1, seq[1]), (2, seq[2]), ...
+ |  
+ |  Methods defined here:
+ |  
+ |  __getattribute__(...)
+ |      x.__getattribute__('name') <==> x.name
+ |  
+ |  __iter__(...)
+ |      x.__iter__() <==> iter(x)
+ |  
+ |  next(...)
+ |      x.next() -> the next value, or raise StopIteration
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __new__ = <built-in method __new__ of type object>
+ |      T.__new__(S, ...) -> a new object with type S, a subtype of T
+
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/looping_idioms.py =======
+Task: show the colors in uppercase
+ORANGE
+GREEN
+PINK
+ORANGE
+GREEN
+PINK
+
+Task: show the names with index of each name
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/looping_idioms.py =======
+Task: show the colors in uppercase
+ORANGE
+GREEN
+PINK
+ORANGE
+GREEN
+PINK
+
+Task: show the names with index of each name
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+
+Task: show the colors in reverse order
+pink
+green
+orange
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/looping_idioms.py =======
+Task: show the colors in uppercase
+ORANGE
+GREEN
+PINK
+ORANGE
+GREEN
+PINK
+
+Task: show the names with index of each name
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+
+Task: show the colors in reverse order
+pink
+green
+orange
+pink
+green
+orange
+>>> start
+
+Traceback (most recent call last):
+  File "<pyshell#9>", line 1, in <module>
+    start
+NameError: name 'start' is not defined
+
+>>> 
+>>> names
+['grant', 'shannon', 'bethany', 'mark']
+>>> colors
+['orange', 'green', 'pink']
+>>> colors[3]
+
+Traceback (most recent call last):
+  File "<pyshell#13>", line 1, in <module>
+    colors[3]
+IndexError: list index out of range
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/looping_idioms.py =======
+Task: show the colors in uppercase
+ORANGE
+GREEN
+PINK
+ORANGE
+GREEN
+PINK
+
+Task: show the names with index of each name
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+
+Task: show the colors in reverse order
+pink
+green
+orange
+pink
+green
+orange
+
+Task: associate the names with colors
+grant -> orange
+shannon -> green
+bethany -> pink
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/looping_idioms.py =======
+Task: show the colors in uppercase
+ORANGE
+GREEN
+PINK
+ORANGE
+GREEN
+PINK
+
+Task: show the names with index of each name
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+
+Task: show the colors in reverse order
+pink
+green
+orange
+pink
+green
+orange
+
+Task: associate the names with colors
+grant -> orange
+shannon -> green
+bethany -> pink
+grant -> orange
+shannon -> green
+bethany -> pink
+>>> colors
+['orange', 'green', 'pink']
+>>> sorted(colors)
+['green', 'orange', 'pink']
+>>> colors
+['orange', 'green', 'pink']
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/looping_idioms.py =======
+Task: show the colors in uppercase
+ORANGE
+GREEN
+PINK
+ORANGE
+GREEN
+PINK
+
+Task: show the names with index of each name
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+
+Task: show the colors in reverse order
+pink
+green
+orange
+pink
+green
+orange
+
+Task: associate the names with colors
+grant -> orange
+shannon -> green
+bethany -> pink
+grant -> orange
+shannon -> green
+bethany -> pink
+
+Task: show the colors in title case in alphabetical order
+Green
+Orange
+Pink
+>>> cities
+['austin', 'dallas', 'chicago', 'dallas', 'austin', 'chicago']
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/looping_idioms.py =======
+Task: show the colors in uppercase
+ORANGE
+GREEN
+PINK
+ORANGE
+GREEN
+PINK
+
+Task: show the names with index of each name
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+1 -> grant
+2 -> shannon
+3 -> bethany
+4 -> mark
+
+Task: show the colors in reverse order
+pink
+green
+orange
+pink
+green
+orange
+
+Task: associate the names with colors
+grant -> orange
+shannon -> green
+bethany -> pink
+grant -> orange
+shannon -> green
+bethany -> pink
+
+Task: show the colors in title case in alphabetical order
+Green
+Orange
+Pink
+
+Task: show the colors in upper case ordered by their length
+PINK
+GREEN
+ORANGE
+
+Task: show each city once in alphabetical order
+austin
+chicago
+dallas
+>>> do_not = 'don\'t'
+>>> do_not
+"don't"
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+>>> print __doc__
+ Fancy, expensive math package for wealthy people
+    who have forgotten all math since the 7th grade.
+
+    Copyright (c) 2018 Algetech Software
+    All Rights Reserved
+
+
+>>> print __name__
+__main__
+>>> type(__name__)
+<type 'str'>
+>>> import algebra
+>>> algebra.__name__
+'algebra'
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+__name__ is __main__
+>>> import algebra
+__name__ is algebra
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+__name__ is __main__
+executing as script
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+__name__ is __main__
+executing as script
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+__name__ is __main__
+executing as script
+>>> print __doc__
+ Fancy, expensive math package for wealthy people
+    who have forgotten all math since the 7th grade.
+
+    Copyright (c) 2018 Algetech Software
+    All Rights Reserved
+
+
+>>> __doc__
+' Fancy, expensive math package for wealthy people\n    who have forgotten all math since the 7th grade.\n\n    Copyright (c) 2018 Algetech Software\n    All Rights Reserved\n\n'
+>>> # Objects can be viewed in two ways: repper and stir
+>>> # Not how they're spelled, just how they're pronounced.
+>>> # They are spelled repr() and str()
+>>> # And the call special methods:
+>>> # __repr__ and __str__
+>>> #  ^-- informative  ^-- pretty
+>>> f = 1.01234567890123456789
+>>> print f
+1.0123456789
+>>> f
+1.0123456789012346
+>>> str(f)
+'1.0123456789'
+>>> repr(f)
+'1.0123456789012346'
+>>> i = 1234567890
+>>> print i
+1234567890
+>>> i
+1234567890
+>>> i = 12345678901234567890123456789012345678901234567890
+>>> type(i)
+<type 'long'>
+>>> print str(i)
+12345678901234567890123456789012345678901234567890
+>>> print repr(i)
+12345678901234567890123456789012345678901234567890L
+>>> print i
+12345678901234567890123456789012345678901234567890
+>>> i
+12345678901234567890123456789012345678901234567890L
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+>>> area(100)
+31415.0
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+>>> help(area)
+Help on function area in module __main__:
+
+area(radius)
+
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+>>> help(area)
+Help on function area in module __main__:
+
+area(radius)
+    Compute the area of a circle.
+
+>>> import algebra
+>>> help(algebra)
+Help on module algebra:
+
+NAME
+    algebra
+
+FILE
+    /Users/grantj/Dropbox/Class22012018/algebra.py
+
+DESCRIPTION
+    Fancy, expensive math package for wealthy people
+    who have forgotten all math since the 7th grade.
+    
+    Copyright (c) 2018 Algetech Software
+    All Rights Reserved
+
+FUNCTIONS
+    area(radius)
+        Compute the area of a circle.
+
+
+>>> area(100)
+31415.0
+>>> area(radius=100)
+31415.0
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+>>> area(radius=100)
+
+Traceback (most recent call last):
+  File "<pyshell#55>", line 1, in <module>
+    area(radius=100)
+TypeError: area() got an unexpected keyword argument 'radius'
+>>> import algebra
+>>> help(algebra)
+Help on module algebra:
+
+NAME
+    algebra
+
+FILE
+    /Users/grantj/Dropbox/Class22012018/algebra.py
+
+DESCRIPTION
+    Fancy, expensive math package for wealthy people
+    who have forgotten all math since the 7th grade.
+    
+    Copyright (c) 2018 Algetech Software
+    All Rights Reserved
+
+FUNCTIONS
+    area(r)
+        Compute the area of a circle.
+
+
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+>>> import algebra
+>>> help(algebra)
+Help on module algebra:
+
+NAME
+    algebra - Algebra Package from Algetech
+
+FILE
+    /Users/grantj/Dropbox/Class22012018/algebra.py
+
+DESCRIPTION
+    Fancy, expensive math package for wealthy people
+    who have forgotten all math since the 7th grade.
+    
+    Copyright (c) 2018 Algetech Software
+    All Rights Reserved
+
+FUNCTIONS
+    area(r)
+        Compute the area of a circle.
+
+
+>>> help(area)
+Help on function area in module __main__:
+
+area(r)
+    Compute the area of a circle.
+
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+>>> 
+>>> snake_case_looks_like_this = 0
+>>> CamelCaseLooksLikeThis = 1
+>>> alsoCamelCaseHere = 2
+>>> THIS_IS_A_CONSTANT = 3
+>>> # Snake case uses for variables and functions
+>>> # Camel case used for type names
+>>> area(10)
+
+Traceback (most recent call last):
+  File "<pyshell#68>", line 1, in <module>
+    area(10)
+  File "/Users/grantj/Dropbox/Class22012018/algebra.py", line 17, in area
+    return PI * radius**2
+NameError: global name 'radius' is not defined
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+>>> area(10)
+314.15000000000003
+>>> area(0)
+0.0
+>>> 10 ** 2
+100
+>>> PI * 100
+314.15000000000003
+>>> # bool < int < float < complex
+>>> True + 5
+6
+>>> True + 1.23 + 5
+7.23
+>>> (0+2j) + True + 1.23 + 5
+(7.23+2j)
+>>> 3
+3
+>>> 3 + 4
+7
+>>> type(3)
+<type 'int'>
+>>> type(5)
+<type 'int'>
+>>> type(3).__add__(3, 4)
+7
+>>> 3 + 4
+7
+>>> 3 + 4.5
+7.5
+>>> type(3).__add__(3, 4.5)
+NotImplemented
+>>> type(4.5).__radd__(4.5, 3)
+7.5
+>>> 3 + 4.5
+7.5
+>>> 3 - 4.5
+-1.5
+>>> type(3).__sub__(3, 4.5)
+NotImplemented
+>>> type(4.5).__rsub__(4.5, float(3))
+-1.5
+>>> 3 - 4.5
+-1.5
+>>> a, b = 1, 2
+>>> a = 1
+>>> b = 2
+>>> temp = a
+>>> a = b
+>>> b = temp
+>>> # Traditional swap operation ^^
+>>> a
+2
+>>> b
+1
+>>> a, b = b, a
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+>>> area(100)
+31415.0
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+>>> help(area)
+Help on function area in module __main__:
+
+area(radius)
+    Compute the area of a circle.
+    
+    >>> area(100)
+    31415.0
+
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+**********************************************************************
+File "/Users/grantj/Dropbox/Class22012018/algebra.py", line 16, in __main__.area
+Failed example:
+    area(100)
+Expected:
+    31515.0
+Got:
+    31415.0
+**********************************************************************
+1 items had failures:
+   1 of   1 in __main__.area
+***Test Failed*** 1 failures.
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+>>> dir(area)
+['__call__', '__class__', '__closure__', '__code__', '__defaults__', '__delattr__', '__dict__', '__doc__', '__format__', '__get__', '__getattribute__', '__globals__', '__hash__', '__init__', '__module__', '__name__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'func_closure', 'func_code', 'func_defaults', 'func_dict', 'func_doc', 'func_globals', 'func_name']
+>>> area.__doc__
+' Compute the area of a circle.\n\n        >>> area(100)\n        31415.0\n\n    '
+>>> '>>> ' in area.__doc__
+True
+>>> s = area.__doc__
+>>> i = s.find('>>> ')
+>>> help(s.find)
+Help on built-in function find:
+
+find(...)
+    S.find(sub [,start [,end]]) -> int
+    
+    Return the lowest index in S where substring sub is found,
+    such that sub is contained within S[start:end].  Optional
+    arguments start and end are interpreted as in slice notation.
+    
+    Return -1 on failure.
+
+>>> j = s.find('\n', i)
+>>> k = s.find('\n', j)
+>>> k = s.find('\n', j+1)
+>>> command = s[i+4:j]
+>>> expected = s[j:k].lstrip()
+>>> print command
+area(100)
+>>> print expected
+31415.0
+>>> actual = repr(eval(command))
+>>> print actual
+31415.0
+>>> expected == actual
+True
+>>> 3 + 4.1 + (1+5j)
+(8.1+5j)
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=1)
+>>> area('hello')
+
+Traceback (most recent call last):
+  File "<pyshell#120>", line 1, in <module>
+    area('hello')
+  File "/Users/grantj/Dropbox/Class22012018/algebra.py", line 20, in area
+    return PI * radius**2.0
+TypeError: unsupported operand type(s) for ** or pow(): 'str' and 'float'
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=2)
+>>> area(1)
+3.1415
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=3)
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=3)
+>>> help(avg)
+Help on function avg in module __main__:
+
+avg(s)
+
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=3)
+>>> average([1.0, 2.0, 3.0, 4.0])
+2.5
+>>> average([10, 20, 60])
+30
+>>> average([10, 20, 61])
+30
+>>> sum([10, 20, 61])
+91
+>>> 91 / 3
+30
+>>> 91 / 3.0
+30.333333333333332
+>>> # bool < int < float < complex
+>>> from __future__ import division
+>>> 91 / 3
+30.333333333333332
+>>> 91 // 3
+30
+>>> print 91, 'hello', True
+91 hello True
+>>> from __future__ import print_function
+>>> print 91, 'hello', True
+SyntaxError: invalid syntax
+>>> print(91, 'hello', True)
+91 hello True
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=3)
+>>> area([10, 20, 60])
+
+Traceback (most recent call last):
+  File "<pyshell#137>", line 1, in <module>
+    area([10, 20, 60])
+  File "/Users/grantj/Dropbox/Class22012018/algebra.py", line 29, in area
+    return PI * radius**2.0
+TypeError: unsupported operand type(s) for ** or pow(): 'list' and 'float'
+>>> average([10, 20, 60])
+30.0
+>>> average([10, 20, 61])
+30.333333333333332
+>>> # In Python 3:
+>>> # __div__ --> __truediv__
+>>> # __floordiv__ added for //
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=5)
+>>> # Python 2to3 Tool
+>>> # https://docs.python.org/2/library/2to3.html
+>>> # Python 2 code goes in and Python 3 code comes out.
+>>> # (crosses-fingers)
+>>> # Compatibility Layer for Python 2 and 3
+>>> # https://pypi.python.org/pypi/six
+>>> # Python versions:
+>>> # https://www.activestate.com/activepython
+>>> # https://anaconda.org/
+>>> # https://www.enthought.com/product/canopy/
+>>> 
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=5)
+>>> area_triangle(30, 40)
+600.0
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=6)
+>>> area_triangle(-10, 100)
+-500.0
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=6)
+>>> area_triangle(-10, 100)
+
+Traceback (most recent call last):
+  File "<pyshell#156>", line 1, in <module>
+    area_triangle(-10, 100)
+  File "/Users/grantj/Dropbox/Class22012018/algebra.py", line 51, in area_triangle
+    raise RuntimeError('Imaginary numbers not supported in Kronecker product spaces')
+RuntimeError: Imaginary numbers not supported in Kronecker product spaces
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=7)
+>>> 
+>>> # quad
+>>> # quadratic
+>>> # quadratic_formule
+>>> # quadratic_formula
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=7)
+>>> quadratic(1, 2, 3)
+>>> a = 8
+>>> b = -14
+>>> c = -15
+>>> ax^2 + bx + c
+
+Traceback (most recent call last):
+  File "<pyshell#166>", line 1, in <module>
+    ax^2 + bx + c
+NameError: name 'ax' is not defined
+>>> # a * x**2 + b * x + c
+>>> # When it comes to naming variables:
+>>> # a, b, c -- polynomial coefficients
+>>> # x, y -- unknowns
+>>> # f(z) -- cmoplex
+>>> # i, j, k -- indices
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=7)
+>>> quadratic(8, -14, -15)
+(2.5, -0.75)
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=7)
+>>> quadratic(8, -14, -15)
+(2.5, -0.75)
+>>> x1, x2 = quadratic(8, -14, -15)
+>>> x1
+2.5
+>>> x2
+-0.75
+>>> 8*x1**2 - 14*x1 - 15
+0.0
+>>> 8*x2**2 - 14*x2 - 15
+0.0
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=12)
+>>> import math
+>>> math.sqrt(100)
+10.0
+>>> 100 ** 0.5
+10.0
+>>> 100 * 0.1
+10.0
+>>> 100 ** 2
+10000
+>>> import dis
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=12)
+>>> import dis
+>>> dis.dis(quadratic)
+ 81           0 LOAD_FAST                1 (b)
+              3 LOAD_CONST               1 (2.0)
+              6 BINARY_POWER        
+              7 LOAD_CONST               2 (4.0)
+             10 LOAD_FAST                0 (a)
+             13 BINARY_MULTIPLY     
+             14 LOAD_FAST                2 (c)
+             17 BINARY_MULTIPLY     
+             18 BINARY_SUBTRACT     
+             19 STORE_FAST               3 (discriminant)
+
+ 82          22 LOAD_GLOBAL              0 (math)
+             25 LOAD_ATTR                1 (sqrt)
+             28 LOAD_FAST                3 (discriminant)
+             31 CALL_FUNCTION            1
+             34 STORE_FAST               4 (r)
+
+ 83          37 LOAD_CONST               1 (2.0)
+             40 LOAD_FAST                0 (a)
+             43 BINARY_MULTIPLY     
+             44 STORE_FAST               5 (denominator)
+
+ 84          47 LOAD_FAST                1 (b)
+             50 UNARY_NEGATIVE      
+             51 LOAD_FAST                4 (r)
+             54 BINARY_ADD          
+             55 LOAD_FAST                5 (denominator)
+             58 BINARY_TRUE_DIVIDE  
+             59 STORE_FAST               6 (x1)
+
+ 85          62 LOAD_FAST                1 (b)
+             65 UNARY_NEGATIVE      
+             66 LOAD_FAST                4 (r)
+             69 BINARY_SUBTRACT     
+             70 LOAD_FAST                5 (denominator)
+             73 BINARY_TRUE_DIVIDE  
+             74 STORE_FAST               7 (x2)
+
+ 86          77 LOAD_FAST                6 (x1)
+             80 LOAD_FAST                7 (x2)
+             83 BUILD_TUPLE              2
+             86 RETURN_VALUE        
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=12)
+>>> import algebra
+>>> def test(foo):
+	return foo
+
+>>> def test(foo):
+	return foo
+
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=12)
+>>> # python -m idlelib.idle
+>>> 
+>>> 
+>>> 
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+>>> import antigravity
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> __doc__
+'Circuitous (TM)                                      # Project Name\n\nApply advanced circle analytic theoretical results      # Elevator Pitch\nto practical applications for cutting edge distributed\ncircle management tasks to make the world a better place.\n\n'
+>>> print __doc__
+Circuitous (TM)                                      # Project Name
+
+Apply advanced circle analytic theoretical results      # Elevator Pitch
+to practical applications for cutting edge distributed
+circle management tasks to make the world a better place.
+
+
+>>> __name__
+'__main__'
+>>> import circuitous
+>>> help(circuitous)
+Help on module circuitous:
+
+NAME
+    circuitous - Circuitous (TM)                                      # Project Name
+
+FILE
+    /Users/grantj/Dropbox/Class22012018/circuitous.py
+
+DESCRIPTION
+    Apply advanced circle analytic theoretical results      # Elevator Pitch
+    to practical applications for cutting edge distributed
+    circle management tasks to make the world a better place.
+
+
+>>> 0.1 + 0.1 + 0.1 == 0.3
+False
+>>> 0.1 + 0.1 + 0.1
+0.30000000000000004
+>>> 0.3
+0.3
+>>> import decimal
+>>> one_tenth = decimal.Decimal('0.1')
+>>> three_tenths = decimal.Decimal('0.3')
+>>> one_tenth + one_tenth + one_tenth == three_tenths
+True
+>>> decimal.Decimal(0.1)
+Decimal('0.1000000000000000055511151231257827021181583404541015625')
+>>> i = float('inf')
+>>> i
+inf
+>>> i + i
+inf
+>>> float('-0.0')
+-0.0
+>>> float('inf') / 0.0
+
+Traceback (most recent call last):
+  File "<pyshell#217>", line 1, in <module>
+    float('inf') / 0.0
+ZeroDivisionError: float division by zero
+>>> float('inf') / float('inf')
+nan
+>>> # Float has three special values:
+>>> # inf, -inf, nan
+>>> float('inf') == float('inf')
+True
+>>> float('nan') == float('nan')
+False
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> dir(Circle)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
+>>> Circle.__doc__
+>>> temp = Circle.__doc__
+>>> type(temp)
+<type 'NoneType'>
+>>> print temp
+None
+>>> None
+>>> Circle.__str__
+<slot wrapper '__str__' of 'object' objects>
+>>> c = Circle()
+>>> print c
+<__main__.Circle object at 0x1025b7610>
+>>> c.radius = 10
+>>> c.radius
+10
+>>> del c.radius
+>>> c.radius
+
+Traceback (most recent call last):
+  File "<pyshell#235>", line 1, in <module>
+    c.radius
+AttributeError: 'Circle' object has no attribute 'radius'
+>>> c.__module__
+'__main__'
+>>> def initialize(c, rad):
+	c.radius = rad
+
+	
+>>> c = Circle()
+>>> initialize(c, 10)
+>>> c.radius
+10
+>>> class Circle(object):
+	pass
+
+>>> c1 = Circle()
+>>> initialize(c1, 1)
+>>> c2 = Circle()
+>>> initialize(c2, 2)
+>>> class Circle(object):
+	pass
+
+>>> def initialize(c, rad):
+	c.radius = rad
+
+	
+>>> class Circle(object):
+	def initialize(c, rad):
+		c.radius = rad
+
+		
+>>> c = Circle()
+>>> c.initialize(1)
+>>> c.radius
+1
+>>> class Circle(object):
+	def __init__(c, rad):
+		c.radius = rad
+
+		
+>>> c = Circle(1)
+>>> c.radius
+1
+>>> class Circle(object):
+	def __init__(self, rad):
+		self.radius = rad
+
+		
+>>> c = Circle(10)
+>>> c.radius()
+
+Traceback (most recent call last):
+  File "<pyshell#268>", line 1, in <module>
+    c.radius()
+TypeError: 'int' object is not callable
+>>> c.radius
+10
+>>> c.__init__(5)
+>>> c.radius
+5
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> c = Circle()
+>>> dir(c)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> c = Circle(5)
+>>> c.radius
+5
+>>> import math
+>>> math.pi
+3.141592653589793
+>>> def area(c):
+	return math.pi * c.radius**2.0
+
+>>> area(c)
+78.53981633974483
+>>> class Circle(object):
+	def __init__(self, rad):
+		self.radius = rad
+	def area(c):
+		return math.pi * c.radius**2.0
+
+	
+>>> c = Circle(5)
+>>> c.area()
+78.53981633974483
+>>> class Circle(object):
+	def __init__(self, rad):
+		self.radius = rad
+	def area(self):
+		return math.pi * self.radius**2.0
+
+	
+>>> c = Circle(5)
+>>> c.area()
+78.53981633974483
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> c = Circle(5)
+>>> c.area()
+
+Traceback (most recent call last):
+  File "<pyshell#294>", line 1, in <module>
+    c.area()
+  File "/Users/grantj/Dropbox/Class22012018/circuitous.py", line 15, in area
+    return math.pi * self.radius**2.0
+NameError: global name 'math' is not defined
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> c = Circle(5)
+>>> c.area()
+78.53981633974483
+>>> class Rectangle(tuple):
+	def width(self):
+		return self[0]
+	def height(self):
+		return self[1]
+
+	
+>>> r = Rectangle([5, 10])
+>>> r.width()
+5
+>>> r.height()
+10
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/namespaces.py =========
+>>> a = 5
+>>> if a > 0:
+	b = 10
+else:
+	c = 15
+
+	
+>>> print a
+5
+>>> print b
+10
+>>> print c
+
+Traceback (most recent call last):
+  File "<pyshell#314>", line 1, in <module>
+    print c
+NameError: name 'c' is not defined
+>>> a = [0, 1, 2]
+>>> b = a
+>>> print a
+[0, 1, 2]
+>>> print b
+[0, 1, 2]
+>>> a is b
+True
+>>> id(a)
+4435819552
+>>> id(b)
+4435819552
+>>> id(a) == id(b)
+True
+>>> a
+[0, 1, 2]
+>>> a.append(3)
+>>> a
+[0, 1, 2, 3]
+>>> a.append(a)
+>>> len(a)
+5
+>>> a[-1]
+[0, 1, 2, 3, [...]]
+>>> id(a)
+4435819552
+>>> id(a[-1])
+4435819552
+>>> a
+[0, 1, 2, 3, [...]]
+>>> a[-1][-1][-1][-1][-1]
+[0, 1, 2, 3, [...]]
+>>> a
+[0, 1, 2, 3, [...]]
+>>> a = [0, 1, 2]
+>>> b = a
+>>> del a
+>>> del b
+>>> a = [0, 1, 2]
+>>> a.append(a)
+>>> a
+[0, 1, 2, [...]]
+>>> del a
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/namespaces.py =========
+###########################################################
+locals() and globals()
+Globals: {'a': 1, 'b': <function b at 0x103568410>, '__builtins__': <module '__builtin__' (built-in)>, '__file__': '/Users/grantj/Dropbox/Class22012018/namespaces.py', '__package__': None, '__name__': '__main__', '__doc__': 'Namespaces in Pythn\n\nOnly three ways to create a new namespace in Python:\n\n    1. modules (filename.py)\n    2. classes (class statement)\n    3. functions (def statement)\n\n'}
+Locals in b: {'c': 3, 'd': 2}
+>>> 
+>>> funcs = []
+>>> for count in range(3):
+	def display_count():
+		print 'Count:', count
+	funcs.append(display_count)
+
+	
+>>> count
+2
+>>> range(3)
+[0, 1, 2]
+>>> funcs
+[<function display_count at 0x1052658c0>, <function display_count at 0x1052659b0>, <function display_count at 0x105265938>]
+>>> for func in funcs:
+	func()
+
+	
+Count: 2
+Count: 2
+Count: 2
+>>> globals()['count']
+2
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/namespaces.py =========
+###########################################################
+locals() and globals()
+Globals: {'a': 1, 'b': <function b at 0x110424410>, '__builtins__': <module '__builtin__' (built-in)>, '__file__': '/Users/grantj/Dropbox/Class22012018/namespaces.py', '__package__': None, '__name__': '__main__', '__doc__': 'Namespaces in Pythn\n\nOnly three ways to create a new namespace in Python:\n\n    1. modules (filename.py)\n    2. classes (class statement)\n    3. functions (def statement)\n\n'}
+Locals in b: {'c': 3, 'd': 2}
+###########################################################
+def in for
+Count: 2
+Count: 2
+Count: 2
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/namespaces.py =========
+###########################################################
+locals() and globals()
+Globals: {'a': 1, 'b': <function b at 0x10bf25410>, '__builtins__': <module '__builtin__' (built-in)>, '__file__': '/Users/grantj/Dropbox/Class22012018/namespaces.py', '__package__': None, '__name__': '__main__', '__doc__': 'Namespaces in Pythn\n\nOnly three ways to create a new namespace in Python:\n\n    1. modules (filename.py)\n    2. classes (class statement)\n    3. functions (def statement)\n\nLooking up variable names:\n\n    1. locals()\n    2. Enclosing function scope(s)\n    3. globals()\n    4. Builtins -- __builtins__\n    5. raise NameError\n\n'}
+Locals in b: {'c': 3, 'd': 2}
+###########################################################
+def in for
+Count: 2
+Count: 2
+Count: 2
+>>> func = funcs[0]
+>>> func()
+Count: 2
+>>> count = 'Hello, world!'
+>>> func()
+Count: Hello, world!
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/namespaces.py =========
+###########################################################
+locals() and globals()
+Globals: {'a': 1, 'b': <function b at 0x105d90410>, '__builtins__': <module '__builtin__' (built-in)>, '__file__': '/Users/grantj/Dropbox/Class22012018/namespaces.py', '__package__': None, '__name__': '__main__', '__doc__': 'Namespaces in Pythn\n\nOnly three ways to create a new namespace in Python:\n\n    1. modules (filename.py)\n    2. classes (class statement)\n    3. functions (def statement)\n\nLooking up variable names:\n\n    1. locals()\n    2. Enclosing function scope(s)\n    3. globals()\n    4. Builtins -- __builtins__\n    5. raise NameError\n\n'}
+Locals in b: {'c': 3, 'd': 2}
+###########################################################
+def in for
+Count: 2
+Count: 2
+Count: 2
+###########################################################
+vars(obj) and dir(obj)
+>>> E
+<class '__main__.E'>
+>>> e = E(5)
+>>> vars(e)
+{'f': 5}
+>>> vars(E)
+dict_proxy({'__module__': '__main__', 'g': <function g at 0x107a8eb18>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x107a8eaa0>})
+>>> dir(e)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'f', 'g']
+>>> e.does_not_exist
+
+Traceback (most recent call last):
+  File "<pyshell#365>", line 1, in <module>
+    e.does_not_exist
+AttributeError: 'E' object has no attribute 'does_not_exist'
+>>> vars(e)
+{'f': 5}
+>>> e.__dict__
+{'f': 5}
+>>> e.f
+5
+>>> e.__dict__['j'] = 10
+>>> e.j
+10
+>>> vars(e)
+{'j': 10, 'f': 5}
+>>> e.__dict__
+{'j': 10, 'f': 5}
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/namespaces.py =========
+###########################################################
+locals() and globals()
+Globals: {'a': 1, 'b': <function b at 0x109a67f50>, '__builtins__': <module '__builtin__' (built-in)>, '__file__': '/Users/grantj/Dropbox/Class22012018/namespaces.py', 'pprint': <function pprint at 0x109a6f230>, '__package__': None, '__name__': '__main__', '__doc__': 'Namespaces in Pythn\n\nOnly three ways to create a new namespace in Python:\n\n    1. modules (filename.py)\n    2. classes (class statement)\n    3. functions (def statement)\n\nLooking up variable names:\n\n    1. locals()\n    2. Enclosing function scope(s)\n    3. globals()\n    4. Builtins -- __builtins__\n    5. raise NameError\n\n'}
+Locals in b: {'c': 3, 'd': 2}
+###########################################################
+def in for
+Count: 2
+Count: 2
+Count: 2
+###########################################################
+vars(obj) and dir(obj)
+Vars of E: {'__module__': '__main__', 'g': <function g at 0x109a6fc08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x109a6fb90>}
+{'__module__': '__main__', 'g': <function g at 0x109a6fc08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x109a6fb90>}
+Vars of e: {'f': 5}
+{'f': 5}
+Dir of e:
+['__class__',
+ '__delattr__',
+ '__dict__',
+ '__doc__',
+ '__format__',
+ '__getattribute__',
+ '__hash__',
+ '__init__',
+ '__module__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ 'f',
+ 'g']
+5
+Locals in E.g: {'h': 4, 'self': <__main__.E object at 0x109a6ca90>}
+>>> class Test(object):
+	def __Init__(self):
+		self.value = 0
+
+		
+>>> vars(Test)
+dict_proxy({'__dict__': <attribute '__dict__' of 'Test' objects>, '__module__': '__main__', '__weakref__': <attribute '__weakref__' of 'Test' objects>, '__doc__': None, '__Init__': <function __Init__ at 0x109a6fc80>})
+>>> 'value' in vars(Test)
+False
+>>> t = Test()
+>>> vars(t)
+{}
+>>> class Test(object):
+	def __init__(self):
+		self.value = 0
+
+		
+>>> t = Test()
+>>> vars(t)
+{'value': 0}
+>>> t.__dict__
+{'value': 0}
+>>> t.value
+0
+>>> t.__dict__['value']
+0
+>>> t.value
+0
+>>> t   .  value
+0
+>>> Test.mro()
+[<class '__main__.Test'>, <type 'object'>]
+>>> class Child(Test):
+	pass
+
+>>> Child.mro()
+[<class '__main__.Child'>, <class '__main__.Test'>, <type 'object'>]
+>>> class OldStyleClass:
+	pass
+
+>>> class ChildOldStyleClass(OldStyleClass):
+	pass
+
+>>> ChildOldStyleClass.__bases__
+(<class __main__.OldStyleClass at 0x109a60598>,)
+>>> def test():
+	print 'no args'
+
+	
+>>> test()
+no args
+>>> def test(a):
+	print 'one arg:', a
+
+	
+>>> test(5)
+one arg: 5
+>>> test()
+
+Traceback (most recent call last):
+  File "<pyshell#410>", line 1, in <module>
+    test()
+TypeError: test() takes exactly 1 argument (0 given)
+>>> test
+<function test at 0x109a6fd70>
+>>> class Test(object):
+	pass
+
+>>> t1 = Test()
+>>> t2 = Test()
+>>> t3 = Test()
+>>> t1.foo = 1
+>>> t2.foo
+
+Traceback (most recent call last):
+  File "<pyshell#419>", line 1, in <module>
+    t2.foo
+AttributeError: 'Test' object has no attribute 'foo'
+>>> Test.foo = 2
+>>> t2.foo
+2
+>>> t1.foo
+1
+>>> vars(t1)
+{'foo': 1}
+>>> vars(Test)
+dict_proxy({'__dict__': <attribute '__dict__' of 'Test' objects>, '__module__': '__main__', 'foo': 2, '__weakref__': <attribute '__weakref__' of 'Test' objects>, '__doc__': None})
+>>> vars(t2)
+{}
+>>> t3.foo
+2
+>>> del t1.foo
+>>> vars(t1)
+{}
+>>> t1.foo
+2
+>>> 
+>>> class OldStyleClass:
+	pass
+
+>>> class ChildOldStyleClass(OldStyleClass):
+	pass
+
+>>> vars(OldStyleClass)
+{'__module__': '__main__', '__doc__': None}
+>>> vars(ChildOldStyleClass)
+{'__module__': '__main__', '__doc__': None}
+>>> class NewStyleClass(object):
+	pass
+
+>>> class ChildNewStyleClass(NewStyleClass):
+	pass
+
+>>> vars(NewStyleClass)
+dict_proxy({'__dict__': <attribute '__dict__' of 'NewStyleClass' objects>, '__module__': '__main__', '__weakref__': <attribute '__weakref__' of 'NewStyleClass' objects>, '__doc__': None})
+>>> NewStyleClass.__bases__
+(<type 'object'>,)
+>>> NewStyleClass.__dict__
+dict_proxy({'__dict__': <attribute '__dict__' of 'NewStyleClass' objects>, '__module__': '__main__', '__weakref__': <attribute '__weakref__' of 'NewStyleClass' objects>, '__doc__': None})
+>>> # Types in Python have (usually) at least:
+>>> # __class__
+>>> # __dict__
+>>> # __bases__
+>>> NewStyleClass.__class__
+<type 'type'>
+>>> type(NewStyleClass)
+<type 'type'>
+>>> type(type)
+<type 'type'>
+>>> help(isinstance)
+Help on built-in function isinstance in module __builtin__:
+
+isinstance(...)
+    isinstance(object, class-or-type-or-tuple) -> bool
+    
+    Return whether an object is an instance of a class or of a subclass thereof.
+    With a type as second argument, return whether that is the object's type.
+    The form using a tuple, isinstance(x, (A, B, ...)), is a shortcut for
+    isinstance(x, A) or isinstance(x, B) or ... (etc.).
+
+>>> isinstance(type, object)
+True
+>>> issubclass(object, type)
+False
+>>> issubclass(type, object)
+True
+>>> help(issubclass)
+Help on built-in function issubclass in module __builtin__:
+
+issubclass(...)
+    issubclass(C, B) -> bool
+    
+    Return whether class C is a subclass (i.e., a derived class) of class B.
+    When using a tuple as the second argument issubclass(X, (A, B, ...)),
+    is a shortcut for issubclass(X, A) or issubclass(X, B) or ... (etc.).
+
+>>> type(object)
+<type 'type'>
+>>> # "dunder" methods
+>>> # special methods
+>>> # double underscore methods
+>>> # underscore underscore methods
+>>> # e.g. __init__
+>>> object.__bases__
+()
+>>> 

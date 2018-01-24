@@ -1,0 +1,3283 @@
+﻿Python 2.7.14 (default, Sep 22 2017, 00:05:22) 
+[GCC 4.2.1 Compatible Apple LLVM 7.3.0 (clang-703.0.31)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+
+>>> 
+
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> c = Circle(5)
+>>> c.area()
+78.53981633974483
+>>> Circle.area(c)
+78.53981633974483
+>>> Circle.area
+<unbound method Circle.area>
+>>> c.area
+<bound method Circle.area of <__main__.Circle object at 0x109ea6110>>
+>>> Circle.area(c)
+78.53981633974483
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> help(Circle)
+Help on class Circle in module __main__:
+
+class Circle(__builtin__.object)
+ |  Methods defined here:
+ |  
+ |  __init__(self, radius)
+ |  
+ |  area(self)
+ |      Perform quadrature of a planar shape of uniform revolution.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> help(Circle)
+Help on class Circle in module __main__:
+
+class Circle(__builtin__.object)
+ |  Create a circle instance from a radius.
+ |  
+ |  As part of an advanced circle analytics toolkit.
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, radius)
+ |  
+ |  area(self)
+ |      Perform quadrature of a planar shape of uniform revolution.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+
+>>> vars(Circle)
+dict_proxy({'__module__': '__main__', 'area': <function area at 0x102d9c938>, '__dict__': <attribute '__dict__' of 'Circle' objects>, '__weakref__': <attribute '__weakref__' of 'Circle' objects>, '__doc__': 'Create a circle instance from a radius.\n\n    As part of an advanced circle analytics toolkit.\n\n    ', '__init__': <function __init__ at 0x102d9c8c0>})
+>>> vars(Circle).keys()
+['__module__', 'area', '__dict__', '__weakref__', '__doc__', '__init__']
+>>> Circle.__bases__
+(<type 'object'>,)
+>>> Circle.__class__
+<type 'type'>
+>>> c = Circle(10)
+>>> type(c)
+<class '__main__.Circle'>
+>>> c.__class__
+<class '__main__.Circle'>
+>>> # type() --> .__class__
+>>> # vars() --> .__dict__
+>>> dir(c)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'area', 'radius']
+>>> class FamilyMember(object):
+	pass
+
+>>> grant = FamilyMember()
+>>> grant.wife = FamilyMember()
+>>> shannon = grant.wife
+>>> class Place(object):
+	pass
+
+>>> hospital = Place()
+>>> hospital.patient = shannon
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> price = 100.0
+>>> total = price * 1.0825
+>>> tax = 1.0825
+>>> total = price * tax
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous
+A circle with a radius of 10
+has an area of 314.159265359
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+A circle with a radius of 10
+has an area of 314.159265359
+
+>>> text = u'Unicode trade mark sign: \N{trade mark sign}'
+>>> len(text)
+26
+>>> prefix = 'Unicode trade mark sign: '
+>>> len(prefix)
+25
+>>> s = text.encode('utf-8')
+>>> len(s)
+28
+>>> text.encode('ascii')
+
+Traceback (most recent call last):
+  File "<pyshell#41>", line 1, in <module>
+    text.encode('ascii')
+UnicodeEncodeError: 'ascii' codec can't encode character u'\u2122' in position 25: ordinal not in range(128)
+>>> # Python 2 to 3
+>>> # Python 2: str represents bytes, unicode represents unicode
+>>> # Python 3: str represents unicode, bytes represents bytes
+>>> print u'\N{white smiling face}'
+☺
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+A circle with a radius of 10
+has an area of 314.159265359
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 6, in <module>
+    print 'Circle class version: %s' % Circle.version
+AttributeError: type object 'Circle' has no attribute 'version'
+>>> Circle.version
+
+Traceback (most recent call last):
+  File "<pyshell#46>", line 1, in <module>
+    Circle.version
+AttributeError: type object 'Circle' has no attribute 'version'
+>>> c.version
+
+Traceback (most recent call last):
+  File "<pyshell#47>", line 1, in <module>
+    c.version
+NameError: name 'c' is not defined
+>>> c = Circle(5)
+>>> c.version
+
+Traceback (most recent call last):
+  File "<pyshell#49>", line 1, in <module>
+    c.version
+AttributeError: 'Circle' object has no attribute 'version'
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 6, in <module>
+    print 'Circle class version: %s' % Circle.version
+AttributeError: type object 'Circle' has no attribute 'version'
+>>> c = Circle(5)
+>>> c.version
+'0.1'
+>>> Circle.version
+
+Traceback (most recent call last):
+  File "<pyshell#52>", line 1, in <module>
+    Circle.version
+AttributeError: type object 'Circle' has no attribute 'version'
+>>> Circle.__dict__.keys()
+['__module__', 'area', '__dict__', '__weakref__', '__doc__', '__init__']
+>>> c.__dict__.keys()
+['version', 'radius']
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+>>> c.__dict__.keys()
+['radius']
+>>> type(c).__dict__.keys()
+['__module__', 'area', 'version', '__dict__', '__weakref__', '__doc__', '__init__']
+>>> version = 0.1
+>>> future_version = 10.0
+>>> another_version = 2.0
+>>> future_version > another_version
+True
+>>> future_version = '10.0'
+>>> another_version = '2.0'
+>>> future_version > another_version
+False
+>>> '1' > '2'
+False
+>>> '2.7.1' < '2.7.2'
+True
+>>> '2.7.3' > '2.7.14'
+True
+>>> (2, 7, 3) > (2, 7, 14)
+False
+>>> from pprint import pprint
+>>> pprint(sorted([
+	'rachel',
+	'matthew',
+	'raymond',
+], width=20))
+
+Traceback (most recent call last):
+  File "<pyshell#73>", line 5, in <module>
+    ], width=20))
+TypeError: 'width' is an invalid keyword argument for this function
+>>> pprint(sorted([
+	'rachel',
+	'matthew',
+	'raymond',
+]), width=20)
+['matthew',
+ 'rachel',
+ 'raymond']
+>>> pprint(sorted([
+	(1, 105, 0),
+	(5, 10, 50),
+	(1, 100, 150),
+]), width=20)
+[(1, 100, 150),
+ (1, 105, 0),
+ (5, 10, 50)]
+>>> # Lexicographic sort order applies to most sequence types.
+>>> # Sequence type examples: strings, tuples, lists
+>>> # We can take advantage of lexicographic sort order with heaps.
+>>> todo = [
+	(50, 'teach python'),
+	(90, 'go to bed'),
+	(10, 'wake up'),
+	(30, 'feed the kids'),
+	(70, 'read news and email'),
+]
+>>> from heapq import *
+>>> heapify(todo)
+>>> heappop(todo)
+(10, 'wake up')
+>>> heappush(todo, (40, 'get gas'))
+>>> heappop(todo)
+(30, 'feed the kids')
+>>> heappop(todo)
+(40, 'get gas')
+>>> 
+>>> 
+>>> shirt = (200, 0, 200)
+>>> class RGB:
+	def __init__(self, red, green, blue):
+		self.red = red
+		self.green = green
+		self.blue = blue
+
+		
+>>> shirt = RGB(red=200, green=0, blue=200)
+>>> from collections import namedtuple
+>>> RGB = namedtuple('RGB', ['red', 'green', 'blue'])
+>>> shirt = RGB(red=200, green=0, blue=200)
+>>> shirt
+RGB(red=200, green=0, blue=200)
+>>> shirt.red += 10
+
+Traceback (most recent call last):
+  File "<pyshell#110>", line 1, in <module>
+    shirt.red += 10
+AttributeError: can't set attribute
+>>> shirt.red
+200
+>>> shirt[0]
+200
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/algebra.py ==========
+TestResults(failed=0, attempted=12)
+>>> import sys
+>>> vi = sys.version_info
+>>> tuple(vi)
+(2, 7, 14, 'final', 0)
+>>> vi
+sys.version_info(major=2, minor=7, micro=14, releaselevel='final', serial=0)
+>>> sys.version_info.major == 2
+True
+>>> sys.version_info[:2] == (2, 7)
+True
+>>> import time
+>>> tuple(time.localtime())
+(2018, 1, 23, 10, 30, 12, 1, 23, 0)
+>>> time.localtime()
+time.struct_time(tm_year=2018, tm_mon=1, tm_mday=23, tm_hour=10, tm_min=30, tm_sec=37, tm_wday=1, tm_yday=23, tm_isdst=0)
+>>> BankAccount = namedtuple('BankAccount', ['name', 'acct_num', 'balance'])
+
+Traceback (most recent call last):
+  File "<pyshell#122>", line 1, in <module>
+    BankAccount = namedtuple('BankAccount', ['name', 'acct_num', 'balance'])
+NameError: name 'namedtuple' is not defined
+>>> from collections import namedtuple
+>>> BankAccount = namedtuple('BankAccount', ['name', 'acct_num', 'balance'])
+>>> grant = BankAccount('grant', '387-12-3456', 1023.45)
+>>> daniel = BankAccount('daniel', '387-12-3457', 0.0)
+>>> prototype = BankAccount('<unassigned>', 'xxx-xx-xxxx', 0.0)
+>>> grant = prototype._replace(name='Grant', acct_num='387-12-3456')
+>>> grant.balance
+0.0
+>>> prototype
+BankAccount(name='<unassigned>', acct_num='xxx-xx-xxxx', balance=0.0)
+>>> grant
+BankAccount(name='Grant', acct_num='387-12-3456', balance=0.0)
+>>> s = 'tale of two cities'
+>>> s.replace('two', 'three')
+'tale of three cities'
+>>> s
+'tale of two cities'
+>>> s = 'tale of xxx cities'
+>>> s.replace('xxx', 'two')
+'tale of two cities'
+>>> s.replace('xxx', 'three')
+'tale of three cities'
+>>> grant
+BankAccount(name='Grant', acct_num='387-12-3456', balance=0.0)
+>>> grant = grant._replace(balance=grant.balance + 100.0)
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 3, in <module>
+    from circuitous import Circle
+  File "/Users/grantj/Dropbox/Class22012018/circuitous.py", line 12
+    Version = namedtuple('Version',, ['major', 'minor', 'micro'])
+                                   ^
+SyntaxError: invalid syntax
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 6, in <module>
+    print 'Circle class version: %s' % Circle(0).version
+TypeError: not all arguments converted during string formatting
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+>>> from random import *
+>>> random()
+0.9408037944580209
+>>> # random()  0.0 <= random() < 1.0
+>>> seed(0)
+>>> random()
+0.8444218515250481
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 25, in <module>
+    circle = Circle(random())
+NameError: name 'random' is not defined
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 0.985526414785
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+>>> # Rounding
+>>> x = -86.0
+>>> int(x)
+-86
+>>> int(-x)
+86
+>>> # ^-- Known as odd function: int(-x) == -int(x)
+>>> [int(x + 0.1) for x in range(-10, 10)]
+[-9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> # Feature of odd functions: symmetric about origin
+>>> from math import ceil and floor
+SyntaxError: invalid syntax
+>>> floor(86.1)
+
+Traceback (most recent call last):
+  File "<pyshell#153>", line 1, in <module>
+    floor(86.1)
+NameError: name 'floor' is not defined
+>>> from math import ceil, floor
+>>> floor(86.1)
+86.0
+>>> ceil(86.1)
+87.0
+>>> floor(86.0)
+86.0
+>>> ceil(86.0)
+86.0
+>>> x = 86.1
+>>> floor(x)
+86.0
+>>> floor(-x)
+-87.0
+>>> floor(-86.1)
+-87.0
+>>> # Symmetric or asymetric? Asymmetric.
+>>> # ceil(x) == floor(x) + 1.0 if not x.is_integral else floor(x)
+>>> x = 86.1
+>>> -floor(-x)
+87.0
+>>> [floor(x + 0.1) for x in range(-10, 10)]
+[-10.0, -9.0, -8.0, -7.0, -6.0, -5.0, -4.0, -3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
+>>> # Notice no double stairstep. Not symmetric.
+>>> x = 86.1
+>>> round(x)
+86.0
+>>> int(x + 0.5)
+86
+>>> round(x + 0.5)
+87.0
+>>> # round(x) == int(x + 0.5) if x > 0 else int(x - 0.5)
+>>> 
+>>> # Four ways to get an integral value from float:
+>>> # int round ceil floor
+>>> # int() returns an integer, truncated
+>>> # ceil() floo() round() return integral floats
+>>> # int() and round() are symmetric about origin
+>>> #   and odd functions: f(-x) = -f(x)
+>>> # ceil() and floor() are both asymmetric about origin
+>>> #   so no weiderd double stairstep
+>>> # Penn & Teller relationsHIP
+>>> # ceil(x) == -floor(-x)
+>>> # ceil(x) == floor(x) + 1.0 if not.is_integral else floor(x)
+>>> round(4.5)
+5.0
+>>> round(5.5)
+6.0
+>>> round(-4.5)
+-5.0
+>>> round(-5.5)
+-6.0
+>>> # rounding rule: round-half-away-from-zero
+>>> # ^^-- Python 2
+>>> # In Python 3, rounding changed:
+>>> # Banker's rounding aka round-half-even
+>>> # Useful for science. Not all number rounded away. Reduces error.
+>>> 1/10
+0
+>>> from __future__ import division
+>>> 1/10
+0.1
+>>> 1//10
+0
+>>> int(floor(1/10))
+0
+>>> def round(num):
+	"Whateer rounding rules we want"
+	return int(num)
+
+>>> round(1.5)
+1
+>>> 
+=============================== RESTART: Shell ===============================
+>>> from random import *
+>>> random()
+0.5212351142808145
+>>> random() * 100
+67.4885781766521
+>>> int(100 + random() * 100)
+104
+>>> randrange(100, 200)
+113
+>>> range(10, 40, 3)
+[10, 13, 16, 19, 22, 25, 28, 31, 34, 37]
+>>> randrange(10, 40, 3)
+25
+>>> outcomes = ['win', 'lose', 'draw', 'try again', 'double']
+>>> len(outcomes)
+5
+>>> #  		0 	1	2	3	4
+>>> outcomes[int(random() * len(outcomes))]
+'try again'
+>>> outcomes[randrange(len(outcomes))]
+'lose'
+>>> from random import choice
+>>> choice(outcomes)
+'lose'
+>>> reults = [choice(outcomes) for i in range(20)]
+>>> results = [choice(outcomes) for i in range(20)]
+>>> results
+['try again', 'try again', 'double', 'double', 'win', 'try again', 'draw', 'draw', 'lose', 'try again', 'try again', 'draw', 'draw', 'lose', 'lose', 'win', 'draw', 'win', 'win', 'double']
+>>> results.index('win') + 1
+5
+>>> result[4]
+
+Traceback (most recent call last):
+  File "<pyshell#223>", line 1, in <module>
+    result[4]
+NameError: name 'result' is not defined
+>>> results[4]
+'win'
+>>> results.index('draw') + 1
+7
+>>> results[6]
+'draw'
+>>> results.count('win')
+4
+>>> results.count('draw')
+5
+>>> # Implement variant of count that counts multiple items?
+>>> # Parsimony -- yagni -- you ain't gonna need it
+>>> results
+['try again', 'try again', 'double', 'double', 'win', 'try again', 'draw', 'draw', 'lose', 'try again', 'try again', 'draw', 'draw', 'lose', 'lose', 'win', 'draw', 'win', 'win', 'double']
+>>> outcomes
+['win', 'lose', 'draw', 'try again', 'double']
+>>> [results.count(outcome) for outcome in outcomes]
+[4, 3, 5, 5, 3]
+>>> data = _
+>>> data
+[4, 3, 5, 5, 3]
+>>> zip(outcomes, data)
+[('win', 4), ('lose', 3), ('draw', 5), ('try again', 5), ('double', 3)]
+>>> from collections import Counter
+>>> c = Counter(results)
+>>> c.most_common(2)
+[('try again', 5), ('draw', 5)]
+>>> c.most_common()
+[('try again', 5), ('draw', 5), ('win', 4), ('double', 3), ('lose', 3)]
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+>>> 'Old style string formating: %s %r %d %f' % ('a string', object(), 123, 4.56)
+'Old style string formating: a string <object object at 0x10d9f70e0> 123 4.560000'
+>>> '%10s' % 'hello'
+'     hello'
+>>> '%.1f' % 1.23456
+'1.2'
+>>> '%04d' % 5
+'0005'
+>>> 'New style formatting {0} {0} {1}'.format('duped', 10)
+'New style formatting duped duped 10'
+>>> 'new style formatting {0:.2f}'.format(1.23456)
+'new style formatting 1.23'
+>>> # https://pyformat.info/
+>>> fullname = '{first_name} {last_name}'
+>>> fullname.format(first_name='Grant', last_name='Jenks')
+'Grant Jenks'
+>>> range(10)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> xrange(10)
+xrange(10)
+>>> x = xrange(10)
+>>> i = iter(x)
+>>> i.next()
+0
+>>> i.next()
+1
+>>> i.next()
+2
+>>> i.next()
+3
+>>> i.next()
+4
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #0
+A rubber circle with a cut radius of 0.1
+has a perimeter of
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 39, in <module>
+    print 'has a perimeter of', c.perimeter()
+AttributeError: 'Circle' object has no attribute 'perimeter'
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #0
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #1
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #2
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+>>> c.radius *= 1.1
+>>> # c.set_radius(c.get_radius() * 1.1)
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+>>> 
+=============================== RESTART: Shell ===============================
+>>> from math import pi
+>>> print pi
+3.14159265359
+>>> pi = 6
+>>> print pi
+6
+>>> import math
+>>> print math.pi
+3.14159265359
+>>> math.pi = 6
+>>> math.pi
+6
+>>> print __name__
+__main__
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/tour_collections.py ======
+>>> type(colors)
+<type 'list'>
+>>> type(colors[0])
+<type 'str'>
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/tour_collections.py ======
+
+Count 2 most common colors:
+[('red', 4), ('green', 3)]
+
+Count 10 most common words in Hamlet:
+>>> it = words('notes/hamlet.txt')
+>>> type(it)
+<type 'generator'>
+>>> it.next()
+'the'
+>>> it.next()
+'tragedy'
+>>> it.next()
+'of'
+>>> it.next()
+'hamlet'
+>>> it.next()
+'prince'
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/tour_collections.py ======
+
+Count 2 most common colors:
+[('red', 4), ('green', 3)]
+
+Count 10 most common words in Hamlet:
+[('the', 1137),
+ ('and', 963),
+ ('to', 736),
+ ('of', 669),
+ ('you', 547),
+ ('i', 540),
+ ('a', 527),
+ ('my', 513),
+ ('hamlet', 461),
+ ('in', 435)]
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/tour_collections.py ======
+
+Count 2 most common colors:
+[('red', 4), ('green', 3)]
+
+Count 10 most common words in Hamlet:
+[('the', 1137),
+ ('and', 963),
+ ('to', 736),
+ ('of', 669),
+ ('you', 547),
+ ('i', 540),
+ ('a', 527),
+ ('my', 513),
+ ('hamlet', 461),
+ ('in', 435)]
+
+Map people to foods in people-order
+OrderedDict([('grant', 'sushi'), ('shannon', 'lobster'), ('bethany', 'soup'), ('mark', 'tacos')])
+>>> people
+['grant', 'shannon', 'bethany', 'mark']
+>>> food_pref.keys()
+['grant', 'shannon', 'bethany', 'mark']
+>>> list()
+[]
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/tour_collections.py ======
+
+Count 2 most common colors:
+[('red', 4), ('green', 3)]
+
+Count 10 most common words in Hamlet:
+[('the', 1137),
+ ('and', 963),
+ ('to', 736),
+ ('of', 669),
+ ('you', 547),
+ ('i', 540),
+ ('a', 527),
+ ('my', 513),
+ ('hamlet', 461),
+ ('in', 435)]
+
+Map people to foods in people-order
+OrderedDict([('grant', 'sushi'), ('shannon', 'lobster'), ('bethany', 'soup'), ('mark', 'tacos')])
+
+Group the names by the first letter in name
+{'a': ['andy',
+       'adam',
+       'ann'],
+ 'b': ['beatrice',
+       'brandon',
+       'bonnie',
+       'bryce',
+       'bill'],
+ 'd': ['david',
+       'don',
+       'darlene',
+       'davin',
+       'dave',
+       'daisy'],
+ 'h': ['hailey',
+       'henry',
+       'hank'],
+ 'm': ['martin',
+       'mary',
+       'mark'],
+ 'r': ['raymond',
+       'rachel',
+       'randal',
+       'rodney'],
+ 's': ['susan',
+       'suzy',
+       'sharon',
+       'sue'],
+ 't': ['tom',
+       'timothy',
+       'trudy',
+       'theordore',
+       'tim']}
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/tour_collections.py ======
+
+Count 2 most common colors:
+[('red', 4), ('green', 3)]
+
+Count 10 most common words in Hamlet:
+[('the', 1137),
+ ('and', 963),
+ ('to', 736),
+ ('of', 669),
+ ('you', 547),
+ ('i', 540),
+ ('a', 527),
+ ('my', 513),
+ ('hamlet', 461),
+ ('in', 435)]
+
+Map people to foods in people-order
+OrderedDict([('grant', 'sushi'), ('shannon', 'lobster'), ('bethany', 'soup'), ('mark', 'tacos')])
+
+Group the names by the first letter in name
+{'a': ['andy', 'adam', 'ann'],
+ 'b': ['beatrice', 'brandon', 'bonnie', 'bryce', 'bill'],
+ 'd': ['david', 'don', 'darlene', 'davin', 'dave', 'daisy'],
+ 'h': ['hailey', 'henry', 'hank'],
+ 'm': ['martin', 'mary', 'mark'],
+ 'r': ['raymond', 'rachel', 'randal', 'rodney'],
+ 's': ['susan', 'suzy', 'sharon', 'sue'],
+ 't': ['tom', 'timothy', 'trudy', 'theordore', 'tim']}
+>>> d[i]
+
+Traceback (most recent call last):
+  File "<pyshell#282>", line 1, in <module>
+    d[i]
+NameError: name 'i' is not defined
+>>> d['i']
+[]
+>>> m = dict()
+>>> m['i']
+
+Traceback (most recent call last):
+  File "<pyshell#285>", line 1, in <module>
+    m['i']
+KeyError: 'i'
+>>> s = defaultdict(list)
+>>> s['i']
+[]
+>>> i = defaultdict(float)
+>>> i['tally']
+0.0
+>>> float()
+0.0
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/tour_collections.py ======
+
+Count 2 most common colors:
+[('red', 4), ('green', 3)]
+
+Count 10 most common words in Hamlet:
+[('the', 1137),
+ ('and', 963),
+ ('to', 736),
+ ('of', 669),
+ ('you', 547),
+ ('i', 540),
+ ('a', 527),
+ ('my', 513),
+ ('hamlet', 461),
+ ('in', 435)]
+
+Map people to foods in people-order
+OrderedDict([('grant', 'sushi'), ('shannon', 'lobster'), ('bethany', 'soup'), ('mark', 'tacos')])
+
+Group the names by the first letter in name
+{'a': ['andy', 'adam', 'ann'],
+ 'b': ['beatrice', 'brandon', 'bonnie', 'bryce', 'bill'],
+ 'd': ['david', 'don', 'darlene', 'davin', 'dave', 'daisy'],
+ 'h': ['hailey', 'henry', 'hank'],
+ 'm': ['martin', 'mary', 'mark'],
+ 'r': ['raymond', 'rachel', 'randal', 'rodney'],
+ 's': ['susan', 'suzy', 'sharon', 'sue'],
+ 't': ['tom', 'timothy', 'trudy', 'theordore', 'tim']}
+
+Group the names by the last letter in name
+{'d': ['david', 'raymond'],
+ 'e': ['beatrice', 'darlene', 'bonnie', 'bryce', 'dave', 'theordore', 'sue'],
+ 'k': ['mark', 'hank'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'm': ['tom', 'adam', 'tim'],
+ 'n': ['susan', 'don', 'brandon', 'martin', 'davin', 'sharon', 'ann'],
+ 'y': ['timothy', 'trudy', 'hailey', 'suzy', 'mary', 'rodney', 'andy', 'henry', 'daisy']}
+
+Group the names by the length of the name
+
+Group the names by the number of vowels in the name: aeiouy
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/tour_collections.py ======
+
+Count 2 most common colors:
+[('red', 4), ('green', 3)]
+
+Count 10 most common words in Hamlet:
+[('the', 1137),
+ ('and', 963),
+ ('to', 736),
+ ('of', 669),
+ ('you', 547),
+ ('i', 540),
+ ('a', 527),
+ ('my', 513),
+ ('hamlet', 461),
+ ('in', 435)]
+
+Map people to foods in people-order
+OrderedDict([('grant', 'sushi'), ('shannon', 'lobster'), ('bethany', 'soup'), ('mark', 'tacos')])
+
+Group the names by the first letter in name
+{'a': ['andy', 'adam', 'ann'],
+ 'b': ['beatrice', 'brandon', 'bonnie', 'bryce', 'bill'],
+ 'd': ['david', 'don', 'darlene', 'davin', 'dave', 'daisy'],
+ 'h': ['hailey', 'henry', 'hank'],
+ 'm': ['martin', 'mary', 'mark'],
+ 'r': ['raymond', 'rachel', 'randal', 'rodney'],
+ 's': ['susan', 'suzy', 'sharon', 'sue'],
+ 't': ['tom', 'timothy', 'trudy', 'theordore', 'tim']}
+
+Group the names by the last letter in name
+{'d': ['david', 'raymond'],
+ 'e': ['beatrice', 'darlene', 'bonnie', 'bryce', 'dave', 'theordore', 'sue'],
+ 'k': ['mark', 'hank'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'm': ['tom', 'adam', 'tim'],
+ 'n': ['susan', 'don', 'brandon', 'martin', 'davin', 'sharon', 'ann'],
+ 'y': ['timothy', 'trudy', 'hailey', 'suzy', 'mary', 'rodney', 'andy', 'henry', 'daisy']}
+
+Group the names by the length of the name
+{3: ['tom', 'don', 'sue', 'tim', 'ann'],
+ 4: ['suzy', 'mary', 'andy', 'bill', 'dave', 'mark', 'hank', 'adam'],
+ 5: ['david', 'susan', 'trudy', 'bryce', 'davin', 'henry', 'daisy'],
+ 6: ['rachel', 'martin', 'hailey', 'bonnie', 'randal', 'rodney', 'sharon'],
+ 7: ['raymond', 'timothy', 'brandon', 'darlene'],
+ 8: ['beatrice'],
+ 9: ['theordore']}
+
+Group the names by the number of vowels in the name: aeiouy
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/tour_collections.py ======
+
+Count 2 most common colors:
+[('red', 4), ('green', 3)]
+
+Count 10 most common words in Hamlet:
+[('the', 1137),
+ ('and', 963),
+ ('to', 736),
+ ('of', 669),
+ ('you', 547),
+ ('i', 540),
+ ('a', 527),
+ ('my', 513),
+ ('hamlet', 461),
+ ('in', 435)]
+
+Map people to foods in people-order
+OrderedDict([('grant', 'sushi'), ('shannon', 'lobster'), ('bethany', 'soup'), ('mark', 'tacos')])
+
+Group the names by the first letter in name
+{'a': ['andy', 'adam', 'ann'],
+ 'b': ['beatrice', 'brandon', 'bonnie', 'bryce', 'bill'],
+ 'd': ['david', 'don', 'darlene', 'davin', 'dave', 'daisy'],
+ 'h': ['hailey', 'henry', 'hank'],
+ 'm': ['martin', 'mary', 'mark'],
+ 'r': ['raymond', 'rachel', 'randal', 'rodney'],
+ 's': ['susan', 'suzy', 'sharon', 'sue'],
+ 't': ['tom', 'timothy', 'trudy', 'theordore', 'tim']}
+
+Group the names by the last letter in name
+{'d': ['david', 'raymond'],
+ 'e': ['beatrice', 'darlene', 'bonnie', 'bryce', 'dave', 'theordore', 'sue'],
+ 'k': ['mark', 'hank'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'm': ['tom', 'adam', 'tim'],
+ 'n': ['susan', 'don', 'brandon', 'martin', 'davin', 'sharon', 'ann'],
+ 'y': ['timothy', 'trudy', 'hailey', 'suzy', 'mary', 'rodney', 'andy', 'henry', 'daisy']}
+
+Group the names by the length of the name
+{3: ['tom', 'don', 'sue', 'tim', 'ann'],
+ 4: ['suzy', 'mary', 'andy', 'bill', 'dave', 'mark', 'hank', 'adam'],
+ 5: ['david', 'susan', 'trudy', 'bryce', 'davin', 'henry', 'daisy'],
+ 6: ['rachel', 'martin', 'hailey', 'bonnie', 'randal', 'rodney', 'sharon'],
+ 7: ['raymond', 'timothy', 'brandon', 'darlene'],
+ 8: ['beatrice'],
+ 9: ['theordore']}
+
+Group the names by the number of vowels in the name: aeiouy
+{1: ['tom', 'don', 'bill', 'mark', 'hank', 'tim', 'ann'],
+ 2: ['david', 'rachel', 'susan', 'trudy', 'brandon', 'martin', 'randal', 'suzy', 'bryce', 'mary', 'davin', 'sharon', 'andy', 'dave', 'henry', 'sue', 'adam'],
+ 3: ['raymond', 'timothy', 'darlene', 'bonnie', 'rodney', 'daisy'],
+ 4: ['beatrice', 'hailey', 'theordore']}
+>>> name = 'beatrice'
+>>> import re
+>>> re.finditer(r'[aeiouy]', name)
+<callable-iterator object at 0x1072cc0d0>
+>>> it = _
+>>> it.next()
+<_sre.SRE_Match object at 0x1072c03d8>
+>>> it.next()
+<_sre.SRE_Match object at 0x1072c0718>
+>>> it.next()
+<_sre.SRE_Match object at 0x1072c03d8>
+>>> it.next()
+<_sre.SRE_Match object at 0x1072c0718>
+>>> it.next()
+
+Traceback (most recent call last):
+  File "<pyshell#299>", line 1, in <module>
+    it.next()
+StopIteration
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/tour_collections.py ======
+
+Count 2 most common colors:
+[('red', 4), ('green', 3)]
+
+Count 10 most common words in Hamlet:
+[('the', 1137),
+ ('and', 963),
+ ('to', 736),
+ ('of', 669),
+ ('you', 547),
+ ('i', 540),
+ ('a', 527),
+ ('my', 513),
+ ('hamlet', 461),
+ ('in', 435)]
+
+Map people to foods in people-order
+OrderedDict([('grant', 'sushi'), ('shannon', 'lobster'), ('bethany', 'soup'), ('mark', 'tacos')])
+
+Group the names by the first letter in name
+{'a': ['andy', 'adam', 'ann'],
+ 'b': ['beatrice', 'brandon', 'bonnie', 'bryce', 'bill'],
+ 'd': ['david', 'don', 'darlene', 'davin', 'dave', 'daisy'],
+ 'h': ['hailey', 'henry', 'hank'],
+ 'm': ['martin', 'mary', 'mark'],
+ 'r': ['raymond', 'rachel', 'randal', 'rodney'],
+ 's': ['susan', 'suzy', 'sharon', 'sue'],
+ 't': ['tom', 'timothy', 'trudy', 'theordore', 'tim']}
+
+Group the names by the last letter in name
+{'d': ['david', 'raymond'],
+ 'e': ['beatrice', 'darlene', 'bonnie', 'bryce', 'dave', 'theordore', 'sue'],
+ 'k': ['mark', 'hank'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'm': ['tom', 'adam', 'tim'],
+ 'n': ['susan', 'don', 'brandon', 'martin', 'davin', 'sharon', 'ann'],
+ 'y': ['timothy', 'trudy', 'hailey', 'suzy', 'mary', 'rodney', 'andy', 'henry', 'daisy']}
+
+Group the names by the length of the name
+{3: ['tom', 'don', 'sue', 'tim', 'ann'],
+ 4: ['suzy', 'mary', 'andy', 'bill', 'dave', 'mark', 'hank', 'adam'],
+ 5: ['david', 'susan', 'trudy', 'bryce', 'davin', 'henry', 'daisy'],
+ 6: ['rachel', 'martin', 'hailey', 'bonnie', 'randal', 'rodney', 'sharon'],
+ 7: ['raymond', 'timothy', 'brandon', 'darlene'],
+ 8: ['beatrice'],
+ 9: ['theordore']}
+
+Group the names by the number of vowels in the name: aeiouy
+{1: ['tom', 'don', 'bill', 'mark', 'hank', 'tim', 'ann'],
+ 2: ['david', 'rachel', 'susan', 'trudy', 'brandon', 'martin', 'randal', 'suzy', 'bryce', 'mary', 'davin', 'sharon', 'andy', 'dave', 'henry', 'sue', 'adam'],
+ 3: ['raymond', 'timothy', 'darlene', 'bonnie', 'rodney', 'daisy'],
+ 4: ['beatrice', 'hailey', 'theordore']}
+>>> # List Comprehensions
+>>> # [expr for variables in iterable]
+>>> [1 for vowel in 'aeiuoy']
+[1, 1, 1, 1, 1, 1]
+>>> sum(1 for vowel in 'aeiuoy')
+6
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/tour_collections.py ======
+
+Count 2 most common colors:
+[('red', 4), ('green', 3)]
+
+Count 10 most common words in Hamlet:
+[('the', 1137),
+ ('and', 963),
+ ('to', 736),
+ ('of', 669),
+ ('you', 547),
+ ('i', 540),
+ ('a', 527),
+ ('my', 513),
+ ('hamlet', 461),
+ ('in', 435)]
+
+Map people to foods in people-order
+OrderedDict([('grant', 'sushi'), ('shannon', 'lobster'), ('bethany', 'soup'), ('mark', 'tacos')])
+
+Group the names by the first letter in name
+{'a': ['andy', 'adam', 'ann'],
+ 'b': ['beatrice', 'brandon', 'bonnie', 'bryce', 'bill'],
+ 'd': ['david', 'don', 'darlene', 'davin', 'dave', 'daisy'],
+ 'h': ['hailey', 'henry', 'hank'],
+ 'm': ['martin', 'mary', 'mark'],
+ 'r': ['raymond', 'rachel', 'randal', 'rodney'],
+ 's': ['susan', 'suzy', 'sharon', 'sue'],
+ 't': ['tom', 'timothy', 'trudy', 'theordore', 'tim']}
+
+Group the names by the last letter in name
+{'d': ['david', 'raymond'],
+ 'e': ['beatrice', 'darlene', 'bonnie', 'bryce', 'dave', 'theordore', 'sue'],
+ 'k': ['mark', 'hank'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'm': ['tom', 'adam', 'tim'],
+ 'n': ['susan', 'don', 'brandon', 'martin', 'davin', 'sharon', 'ann'],
+ 'y': ['timothy', 'trudy', 'hailey', 'suzy', 'mary', 'rodney', 'andy', 'henry', 'daisy']}
+
+Group the names by the length of the name
+{3: ['tom', 'don', 'sue', 'tim', 'ann'],
+ 4: ['suzy', 'mary', 'andy', 'bill', 'dave', 'mark', 'hank', 'adam'],
+ 5: ['david', 'susan', 'trudy', 'bryce', 'davin', 'henry', 'daisy'],
+ 6: ['rachel', 'martin', 'hailey', 'bonnie', 'randal', 'rodney', 'sharon'],
+ 7: ['raymond', 'timothy', 'brandon', 'darlene'],
+ 8: ['beatrice'],
+ 9: ['theordore']}
+
+Group the names by the number of vowels in the name: aeiouy
+{1: ['tom', 'don', 'bill', 'mark', 'hank', 'tim', 'ann'],
+ 2: ['david', 'rachel', 'susan', 'trudy', 'brandon', 'martin', 'randal', 'suzy', 'bryce', 'mary', 'davin', 'sharon', 'andy', 'dave', 'henry', 'sue', 'adam'],
+ 3: ['raymond', 'timothy', 'darlene', 'bonnie', 'rodney', 'daisy'],
+ 4: ['beatrice', 'hailey', 'theordore']}
+
+Fast append and pop at both ends of the sequence:
+alice
+bob
+deque(['eve', 'dave', 'carol'])
+>>> q
+deque(['eve', 'dave', 'carol'])
+>>> bool([])
+False
+>>> bool([1])
+True
+>>> bool(q)
+True
+>>> while q:
+	print q.pop()
+
+	
+carol
+dave
+eve
+>>> q
+deque([])
+>>> bool(q)
+False
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/tour_collections.py ======
+
+Count 2 most common colors:
+[('red', 4), ('green', 3)]
+
+Count 10 most common words in Hamlet:
+[('the', 1137),
+ ('and', 963),
+ ('to', 736),
+ ('of', 669),
+ ('you', 547),
+ ('i', 540),
+ ('a', 527),
+ ('my', 513),
+ ('hamlet', 461),
+ ('in', 435)]
+
+Map people to foods in people-order
+OrderedDict([('grant', 'sushi'), ('shannon', 'lobster'), ('bethany', 'soup'), ('mark', 'tacos')])
+
+Group the names by the first letter in name
+{'a': ['andy', 'adam', 'ann'],
+ 'b': ['beatrice', 'brandon', 'bonnie', 'bryce', 'bill'],
+ 'd': ['david', 'don', 'darlene', 'davin', 'dave', 'daisy'],
+ 'h': ['hailey', 'henry', 'hank'],
+ 'm': ['martin', 'mary', 'mark'],
+ 'r': ['raymond', 'rachel', 'randal', 'rodney'],
+ 's': ['susan', 'suzy', 'sharon', 'sue'],
+ 't': ['tom', 'timothy', 'trudy', 'theordore', 'tim']}
+
+Group the names by the last letter in name
+{'d': ['david', 'raymond'],
+ 'e': ['beatrice', 'darlene', 'bonnie', 'bryce', 'dave', 'theordore', 'sue'],
+ 'k': ['mark', 'hank'],
+ 'l': ['rachel', 'randal', 'bill'],
+ 'm': ['tom', 'adam', 'tim'],
+ 'n': ['susan', 'don', 'brandon', 'martin', 'davin', 'sharon', 'ann'],
+ 'y': ['timothy', 'trudy', 'hailey', 'suzy', 'mary', 'rodney', 'andy', 'henry', 'daisy']}
+
+Group the names by the length of the name
+{3: ['tom', 'don', 'sue', 'tim', 'ann'],
+ 4: ['suzy', 'mary', 'andy', 'bill', 'dave', 'mark', 'hank', 'adam'],
+ 5: ['david', 'susan', 'trudy', 'bryce', 'davin', 'henry', 'daisy'],
+ 6: ['rachel', 'martin', 'hailey', 'bonnie', 'randal', 'rodney', 'sharon'],
+ 7: ['raymond', 'timothy', 'brandon', 'darlene'],
+ 8: ['beatrice'],
+ 9: ['theordore']}
+
+Group the names by the number of vowels in the name: aeiouy
+{1: ['tom', 'don', 'bill', 'mark', 'hank', 'tim', 'ann'],
+ 2: ['david', 'rachel', 'susan', 'trudy', 'brandon', 'martin', 'randal', 'suzy', 'bryce', 'mary', 'davin', 'sharon', 'andy', 'dave', 'henry', 'sue', 'adam'],
+ 3: ['raymond', 'timothy', 'darlene', 'bonnie', 'rodney', 'daisy'],
+ 4: ['beatrice', 'hailey', 'theordore']}
+
+Fast append and pop at both ends of the sequence:
+alice
+bob
+deque(['eve', 'dave', 'carol'])
+carol
+dave
+eve
+
+Last five Python shell prompt lines in day1.txt
+>>> # underscore underscore methods
+
+>>> # e.g. __init__
+
+>>> object.__bases__
+
+>>> 
+
+>>> 
+
+>>> with open('day1.txt') as reader:
+	print sum(1 for line in reader if line.startswith('>>> '))
+
+	
+471
+>>> 
+
+>>> with open('day2.txt') as reader:
+	print sum(1 for line in reader if line.startswith('>>> '))
+
+	
+334
+>>> # Order of Python dictionaries
+>>> # Python 2.7 --> based on hash
+>>> hash('hello')
+840651671246116861
+>>> hash('goodbye')
+-3932129564454141450
+>>> d = {'red': 0, 'green': 1, 'blue': 2}
+>>> d
+{'blue': 2, 'green': 1, 'red': 0}
+>>> # Python 3.2 through 3.5 --> randomized
+>>> # Change using PYTHONHASHSEED environment variable
+>>> # In Python 3.6, dictionaries became ordered by insertion-order
+>>> # https://www.youtube.com/watch?v=npw4s1QTmPg
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 58, in <module>
+    print 'and outer perimeter of', t.perimeter()
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 53, in perimeter
+    return 2 * math.pi * self.radius * 1.25
+NameError: global name 'math' is not defined
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+>>> c = Circle(30)
+>>> c.perimeter()
+188.49555921538757
+>>> t.perimeter()
+235.61944901923448
+>>> vars(t)
+{'radius': 30}
+>>> type(t)
+<class '__main__.Tire'>
+>>> type(t).mro()
+[<class '__main__.Tire'>, <class 'circuitous.Circle'>, <type 'object'>]
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 72, in <module>
+    m = MonsterTire(30)
+NameError: name 'MonsterTire' is not defined
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+>>> c = Circle(30)
+>>> c.perimeter()
+188.49555921538757
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 188.495559215
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+>>> m.RUBBER_RATIO
+1.5
+>>> m.perimeter()
+282.74333882308133
+>>> vars(m)
+{'radius': 30}
+>>> vars(type(m)).keys()
+['RUBBER_RATIO', '__module__', '__doc__']
+>>> type(m).mro()
+[<class '__main__.MonsterTire'>, <class '__main__.Tire'>, <class 'circuitous.Circle'>, <type 'object'>]
+>>> MonsterTire.RUBBER_RATIO
+1.5
+>>> Tire.RUBBER_RATIO
+1.25
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+>>> c = Circle(1)
+>>> print c
+<circuitous.Circle object at 0x10e1ae0d0>
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+>>> print c
+Circle(0.77)
+>>> Circle(0.77)
+Circle(0.77)
+>>> t = Tire(10)
+>>> print t
+Circle(10)
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+>>> t = Tire(10)
+>>> print t
+Tire(10)
+>>> t.__class__
+<class '__main__.Tire'>
+>>> t.__class__.__name__
+'Tire'
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+>>> print c
+Circle(0.77)
+>>> print t
+Tire(30)
+>>> print m
+MonsterTire(30)
+>>> c.__class__.__name__
+'Circle'
+>>> t.__clas__.__name__
+
+Traceback (most recent call last):
+  File "<pyshell#358>", line 1, in <module>
+    t.__clas__.__name__
+AttributeError: 'Tire' object has no attribute '__clas__'
+>>> t.__class__.__name__
+'Tire'
+>>> m.__class__.__name__
+'MonsterTire'
+>>> print m
+MonsterTire(30)
+>>> class Test(object):
+	pass
+
+>>> t = Test()
+>>> print t
+<__main__.Test object at 0x10ff66c90>
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+>>> https://rhettinger.wordpress.com/2011/05/26/super-considered-super/
+SyntaxError: invalid syntax
+>>> # https://rhettinger.wordpress.com/2011/05/26/super-considered-super/
+>>> urls = [
+	'https://www.python.org',
+	'http://www.jython.org',
+	'http://ironpython.net',
+	'https://pypy.org',
+	'http://micropython.org',
+]
+>>> import urllib
+>>> con = urllib.urlopen(urls[0])
+>>> data = con.read()
+>>> con.close()
+>>> len(data)
+48897
+>>> def get(url):
+	con = urllib.urlopen(url)
+	data = con.read()
+	con.close()
+	return data
+
+>>> responses = map(get, urls)
+>>> print map(len, responses)
+[48897, 19210, 8403, 5746, 16764]
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/demo_threading.py =======
+[48897, 5746, 19210, 16764, 8403]
+>>> t = (0)
+>>> t
+0
+>>> t = (0,)
+>>> t
+(0,)
+>>> t = ()
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/namespaces.py =========
+###########################################################
+locals() and globals()
+Globals: {'a': 1, 'b': <function b at 0x1118c7f50>, '__builtins__': <module '__builtin__' (built-in)>, '__file__': '/Users/grantj/Dropbox/Class22012018/namespaces.py', 'pprint': <function pprint at 0x1118cf230>, '__package__': None, '__name__': '__main__', '__doc__': 'Namespaces in Python\n\nOnly three ways to create a new namespace in Python:\n\n    1. modules (filename.py)\n    2. classes (class statement)\n    3. functions (def statement)\n\nLooking up variable names:\n\n    1. locals()\n    2. Enclosing function scope(s)\n    3. globals()\n    4. Builtins -- __builtins__\n    5. raise NameError\n\nLooking up object attributes:\n\n    1. Instance dictionary\n        vars(inst)\n    2. Class dictionary\n        vars(type(inst))\n    3. Search base classes\n        vars(base) for base in type(inst).mro()     (new-style, iterative)\n        vars(base) for base in type(inst).__bases__ (old-style, recursive)\n    4. raise AttributeError\n\n'}
+Locals in b: {'c': 3, 'd': 2}
+###########################################################
+def in for
+Count: 2
+Count: 2
+Count: 2
+###########################################################
+vars(obj) and dir(obj)
+Vars of E: {'__module__': '__main__', 'g': <function g at 0x1118cfc08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x1118cfb90>}
+{'__module__': '__main__', 'g': <function g at 0x1118cfc08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x1118cfb90>}
+Vars of e: {'f': 5}
+{'f': 5}
+Dir of e:
+['__class__',
+ '__delattr__',
+ '__dict__',
+ '__doc__',
+ '__format__',
+ '__getattribute__',
+ '__hash__',
+ '__init__',
+ '__module__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ 'f',
+ 'g']
+5
+Locals in E.g: {'h': 4, 'self': <__main__.E object at 0x1118ccb50>}
+###########################################################
+=, def, class, import
+>>> f(5)
+Locals in f:
+{'T': <class __main__.T at 0x1118c03f8>,
+ 'g': <function g at 0x1118cfc80>,
+ 'random': <module 'random' from '/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.pyc'>,
+ 'x': 5,
+ 'y': 25}
+>>> import random
+>>> random.random()
+0.7780733220086656
+>>> random = 5
+>>> random.random()
+
+Traceback (most recent call last):
+  File "<pyshell#398>", line 1, in <module>
+    random.random()
+AttributeError: 'int' object has no attribute 'random'
+>>> def test(x):
+	return x
+
+>>> test(5)
+5
+>>> test = 5
+>>> test(5)
+
+Traceback (most recent call last):
+  File "<pyshell#404>", line 1, in <module>
+    test(5)
+TypeError: 'int' object is not callable
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/namespaces.py =========
+###########################################################
+locals() and globals()
+Globals: {'a': 1, 'b': <function b at 0x10d8c9f50>, '__builtins__': <module '__builtin__' (built-in)>, '__file__': '/Users/grantj/Dropbox/Class22012018/namespaces.py', 'pprint': <function pprint at 0x10d8d1230>, '__package__': None, '__name__': '__main__', '__doc__': 'Namespaces in Python\n\nOnly three ways to create a new namespace in Python:\n\n    1. modules (filename.py)\n    2. classes (class statement)\n    3. functions (def statement)\n\nLooking up variable names:\n\n    1. locals()\n    2. Enclosing function scope(s)\n    3. globals()\n    4. Builtins -- __builtins__\n    5. raise NameError\n\nLooking up object attributes:\n\n    1. Instance dictionary\n        vars(inst)\n    2. Class dictionary\n        vars(type(inst))\n    3. Search base classes\n        vars(base) for base in type(inst).mro()     (new-style, iterative)\n        vars(base) for base in type(inst).__bases__ (old-style, recursive)\n    4. raise AttributeError\n\n'}
+Locals in b: {'c': 3, 'd': 2}
+###########################################################
+def in for
+Count: 2
+Count: 2
+Count: 2
+###########################################################
+vars(obj) and dir(obj)
+Vars of E: {'__module__': '__main__', 'g': <function g at 0x10d8d1c08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x10d8d1b90>}
+{'__module__': '__main__', 'g': <function g at 0x10d8d1c08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x10d8d1b90>}
+Vars of e: {'f': 5}
+{'f': 5}
+Dir of e:
+['__class__',
+ '__delattr__',
+ '__dict__',
+ '__doc__',
+ '__format__',
+ '__getattribute__',
+ '__hash__',
+ '__init__',
+ '__module__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ 'f',
+ 'g']
+5
+Locals in E.g: {'h': 4, 'self': <__main__.E object at 0x10d8cec50>}
+###########################################################
+=, def, class, import
+###########################################################
+assign in class
+>>> f = Foo()
+>>> f.get_bar()
+
+Traceback (most recent call last):
+  File "<pyshell#406>", line 1, in <module>
+    f.get_bar()
+  File "/Users/grantj/Dropbox/Class22012018/namespaces.py", line 100, in get_bar
+    return bar
+NameError: global name 'bar' is not defined
+>>> vars(Foo).keys()
+['__module__', 'bar', 'get_bar', '__dict__', '__weakref__', '__doc__']
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/namespaces.py =========
+###########################################################
+locals() and globals()
+Globals: {'a': 1, 'b': <function b at 0x1053c9f50>, '__builtins__': <module '__builtin__' (built-in)>, '__file__': '/Users/grantj/Dropbox/Class22012018/namespaces.py', 'pprint': <function pprint at 0x1053d1230>, '__package__': None, '__name__': '__main__', '__doc__': 'Namespaces in Python\n\nOnly three ways to create a new namespace in Python:\n\n    1. modules (filename.py)\n    2. classes (class statement)\n    3. functions (def statement)\n\nLooking up variable names:\n\n    1. locals()\n    2. Enclosing function scope(s)\n    3. globals()\n    4. Builtins -- __builtins__\n    5. raise NameError\n\nLooking up object attributes:\n\n    1. Instance dictionary\n        vars(inst)\n    2. Class dictionary\n        vars(type(inst))\n    3. Search base classes\n        vars(base) for base in type(inst).mro()     (new-style, iterative)\n        vars(base) for base in type(inst).__bases__ (old-style, recursive)\n    4. raise AttributeError\n\n'}
+Locals in b: {'c': 3, 'd': 2}
+###########################################################
+def in for
+Count: 2
+Count: 2
+Count: 2
+###########################################################
+vars(obj) and dir(obj)
+Vars of E: {'__module__': '__main__', 'g': <function g at 0x1053d1c08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x1053d1b90>}
+{'__module__': '__main__', 'g': <function g at 0x1053d1c08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x1053d1b90>}
+Vars of e: {'f': 5}
+{'f': 5}
+Dir of e:
+['__class__',
+ '__delattr__',
+ '__dict__',
+ '__doc__',
+ '__format__',
+ '__getattribute__',
+ '__hash__',
+ '__init__',
+ '__module__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ 'f',
+ 'g']
+5
+Locals in E.g: {'h': 4, 'self': <__main__.E object at 0x1053cec10>}
+###########################################################
+=, def, class, import
+Locals in f:
+{'T': <class __main__.T at 0x1053c2598>,
+ 'g': <function g at 0x1053d1c80>,
+ 'random': <module 'random' from '/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.pyc'>,
+ 'x': 5,
+ 'y': 25}
+###########################################################
+assign in class
+bar: 1
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/namespaces.py =========
+###########################################################
+locals() and globals()
+Globals: {'a': 1, 'b': <function b at 0x10f93a230>, '__builtins__': <module '__builtin__' (built-in)>, '__file__': '/Users/grantj/Dropbox/Class22012018/namespaces.py', 'pprint': <function pprint at 0x10f93a2a8>, '__package__': None, '__name__': '__main__', '__doc__': 'Namespaces in Python\n\nOnly three ways to create a new namespace in Python:\n\n    1. modules (filename.py)\n    2. classes (class statement)\n    3. functions (def statement)\n\nLooking up variable names:\n\n    1. locals()\n    2. Enclosing function scope(s)\n    3. globals()\n    4. Builtins -- __builtins__\n    5. raise NameError\n\nLooking up object attributes:\n\n    1. Instance dictionary\n        vars(inst)\n    2. Class dictionary\n        vars(type(inst))\n    3. Search base classes\n        vars(base) for base in type(inst).mro()     (new-style, iterative)\n        vars(base) for base in type(inst).__bases__ (old-style, recursive)\n    4. raise AttributeError\n\n'}
+Locals in b: {'c': 3, 'd': 2}
+###########################################################
+def in for
+Count: 2
+Count: 2
+Count: 2
+###########################################################
+vars(obj) and dir(obj)
+Vars of E: {'__module__': '__main__', 'g': <function g at 0x10f93ac80>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x10f93ac08>}
+{'__module__': '__main__', 'g': <function g at 0x10f93ac80>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x10f93ac08>}
+Vars of e: {'f': 5}
+{'f': 5}
+Dir of e:
+['__class__',
+ '__delattr__',
+ '__dict__',
+ '__doc__',
+ '__format__',
+ '__getattribute__',
+ '__hash__',
+ '__init__',
+ '__module__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ 'f',
+ 'g']
+5
+Locals in E.g: {'h': 4, 'self': <__main__.E object at 0x10f937cd0>}
+###########################################################
+=, def, class, import
+Locals in f:
+{'T': <class __main__.T at 0x10f92b598>,
+ 'g': <function g at 0x10f93acf8>,
+ 'random': <module 'random' from '/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.pyc'>,
+ 'x': 5,
+ 'y': 25}
+###########################################################
+assign in class
+bar: 1
+###########################################################
+Inheritance
+>>> i = I(7)
+>>> print i.j
+6
+>>> print i.f
+7
+>>> i.g()
+Locals in I.g: {'k': 7, 'self': <__main__.I object at 0x10f9370d0>}
+>>> E.g(i)
+Locals in E.g: {'h': 4, 'self': <__main__.I object at 0x10f9370d0>}
+>>> print type(i)
+<class '__main__.I'>
+>>> i.__class__
+<class '__main__.I'>
+>>> type(i).__bases__
+(<class '__main__.E'>,)
+>>> type(i).mro()
+[<class '__main__.I'>, <class '__main__.E'>, <type 'object'>]
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 81, in <module>
+    print 'is a %s percent grade' % Circle(1).angle_to_grade(5)
+AttributeError: 'Circle' object has no attribute 'angle_to_grade'
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> c = Circle(0)
+>>> c.angle_to_grade(5)
+8.7488663525924
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 80, in <module>
+    from circuitous import angle_to_grade
+ImportError: cannot import name angle_to_grade
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.74886635259 percent grade
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 81, in <module>
+    print 'is a %s percent grade' % Circle.angle_to_grade(5)
+TypeError: unbound method angle_to_grade() must be called with Circle instance as first argument (got int instance instead)
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.74886635259 percent grade
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.7% percent grade
+
+>>> Circle.angle_to_grade(5)
+8.7488663525924
+>>> Circle.angle_to_grade
+<function angle_to_grade at 0x108eedde8>
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> vars(Circle).keys()
+['perimeter', '__module__', 'area', 'angle_to_grade', 'version', '__repr__', 'a2g', '__dict__', '__weakref__', '__doc__', '__init__']
+>>> Circle.a2g(5)
+8.7488663525924
+>>> Circle.angle_to_grade(5)
+
+Traceback (most recent call last):
+  File "<pyshell#423>", line 1, in <module>
+    Circle.angle_to_grade(5)
+TypeError: unbound method angle_to_grade() must be called with Circle instance as first argument (got int instance instead)
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> c = Circle(0)
+>>> c.from_bbd(10)
+Circle(3.5355339059327373)
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.7% percent grade
+
+A circle with bounding box diagonal 30
+has a radius of 10.6066017178
+an area of 353.429173529
+and a perimeter of 66.6432440724
+
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> c = Circle(0)
+>>> c.from_bbd(10)
+Circle(3.5355339059327373)
+>>> Circle.from_bbd(10)
+Circle(3.5355339059327373)
+>>> # Constructor War: Circle(radius) and Circle(bound_box_diagonal)
+>>> # Winners and losers: football, soccer, monopoly
+>>> # Hippies: everybody wins -- twister, frisbee
+>>> # Class methods allow alternative constructors
+>>> # Everybody wins!
+>>> # Usually but not always named with prefix: "from"
+>>> 
+>>> from datetime import *
+>>> d = datetime(2012, 2, 14)
+>>> # year, month, day
+>>> dir(d)
+['__add__', '__class__', '__delattr__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__ne__', '__new__', '__radd__', '__reduce__', '__reduce_ex__', '__repr__', '__rsub__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', 'astimezone', 'combine', 'ctime', 'date', 'day', 'dst', 'fromordinal', 'fromtimestamp', 'hour', 'isocalendar', 'isoformat', 'isoweekday', 'max', 'microsecond', 'min', 'minute', 'month', 'now', 'replace', 'resolution', 'second', 'strftime', 'strptime', 'time', 'timetuple', 'timetz', 'today', 'toordinal', 'tzinfo', 'tzname', 'utcfromtimestamp', 'utcnow', 'utcoffset', 'utctimetuple', 'weekday', 'year']
+>>> d.weekday()
+1
+>>> import time
+>>> time.time()
+1516753789.655357
+>>> datetime.fromtimestamp(time.time())
+datetime.datetime(2018, 1, 23, 16, 30, 12, 238103)
+>>> datetime.fromordinal(735000)
+datetime.datetime(2013, 5, 12, 0, 0)
+>>> datetime.now()
+datetime.datetime(2018, 1, 23, 16, 31, 7, 270606)
+>>> d = dict(grant='orange', shannon='green', bethany='pink')
+>>> d['grant']
+'orange'
+>>> d = dict({'grant': 'orange', 'shannon': 'green', 'bethany': 'pink'})
+>>> d['grant']
+'orange'
+>>> dict([('grant', 'orange'), ('shannon', 'green'), ('bethany', 'pink')])
+{'bethany': 'pink', 'shannon': 'green', 'grant': 'orange'}
+>>> dict(alpha=0, beta=0, gamma=0, delta=0)
+{'alpha': 0, 'beta': 0, 'gamma': 0, 'delta': 0}
+>>> dict.fromkeys(['alpha', 'beta', 'gamma', 'delta'], 0)
+{'alpha': 0, 'beta': 0, 'gamma': 0, 'delta': 0}
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.7% percent grade
+
+A circle with bounding box diagonal 30
+has a radius of 10.6066017178
+an area of 353.429173529
+and a perimeter of 66.6432440724
+
+>>> Tire.from_bbd(20)
+Tire(7.071067811865475)
+>>> c = Circle(10)
+>>> vars(c).keys()
+['radius']
+>>> vars(type(c)).keys()
+['perimeter', '__module__', 'area', 'angle_to_grade', 'from_bbd', 'version', '__repr__', '__dict__', '__weakref__', '__doc__', '__init__']
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30.0
+has an inner area of 4417.86466911
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30.0
+has an inner area of 6361.72512352
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.7% percent grade
+
+A circle with bounding box diagonal 30
+has a radius of 10.6066017178
+an area of 353.429173529
+and a perimeter of 66.6432440724
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10.0
+has an area of
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 9, in <module>
+    print 'has an area of', c.area()
+  File "/Users/grantj/Dropbox/Class22012018/circuitous.py", line 27, in area
+    p = Circle.perimeter()
+TypeError: unbound method perimeter() must be called with Circle instance as first argument (got nothing instead)
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.7% percent grade
+
+A circle with bounding box diagonal 30
+has a radius of 10.6066017178
+an area of 353.429173529
+and a perimeter of 66.6432440724
+
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10.0
+has an area of
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/client_code.py", line 9, in <module>
+    print 'has an area of', c.area()
+  File "/Users/grantj/Dropbox/Class22012018/circuitous.py", line 27, in area
+    p = self._perimeter(self)
+TypeError: perimeter() takes exactly 1 argument (2 given)
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.7% percent grade
+
+A circle with bounding box diagonal 30
+has a radius of 10.6066017178
+an area of 353.429173529
+and a perimeter of 66.6432440724
+
+>>> vars(Circle).keys()
+['perimeter', '__module__', 'area', 'angle_to_grade', 'from_bbd', 'version', '__init__', '__dict__', '__weakref__', '__doc__', '_perimeter', '__repr__']
+>>> Circle.perimeter is Circle._perimeter
+False
+>>> Circle.perimeter
+<unbound method Circle.perimeter>
+>>> vars(Circle)
+dict_proxy({'perimeter': <function perimeter at 0x103f72cf8>, '__module__': 'circuitous', 'area': <function area at 0x103f72c80>, 'angle_to_grade': <staticmethod object at 0x103f55f68>, 'from_bbd': <classmethod object at 0x103f55fa0>, 'version': Version(major=0, minor=1, micro=0), '__init__': <function __init__ at 0x103f72c08>, '__dict__': <attribute '__dict__' of 'Circle' objects>, '__weakref__': <attribute '__weakref__' of 'Circle' objects>, '__doc__': 'Create a circle instance from a radius.\n\n    As part of an advanced circle analytics toolkit.\n\n    ', '_perimeter': <function perimeter at 0x103f72cf8>, '__repr__': <function __repr__ at 0x103f72d70>})
+>>> vars(Tire).keys()
+['perimeter', 'RUBBER_RATIO', '__module__', '__doc__']
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30.0
+has an inner area of 4417.86466911
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30.0
+has an inner area of 6361.72512352
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.7% percent grade
+
+A circle with bounding box diagonal 30
+has a radius of 10.6066017178
+an area of 353.429173529
+and a perimeter of 66.6432440724
+
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> vars(Circle).keys()
+['perimeter', '__module__', '_Circle__perimeter', 'area', 'angle_to_grade', 'from_bbd', 'version', '__repr__', '__dict__', '__weakref__', '__doc__', '__init__']
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.7% percent grade
+
+A circle with bounding box diagonal 30
+has a radius of 10.6066017178
+an area of 353.429173529
+and a perimeter of 66.6432440724
+
+>>> vars(Circle).keys()
+['perimeter', '__module__', '_Circle__perimeter', 'area', 'angle_to_grade', 'from_bbd', 'version', '__repr__', '__dict__', '__weakref__', '__doc__', '__init__']
+>>> vars(Tire).keys()
+['perimeter', '_Tire__perimeter', 'RUBBER_RATIO', '__module__', '__doc__']
+>>> class Test(object):
+	def __init__(self, value):
+		self.__value = value
+
+		
+>>> t = Test()
+
+Traceback (most recent call last):
+  File "<pyshell#469>", line 1, in <module>
+    t = Test()
+TypeError: __init__() takes exactly 2 arguments (1 given)
+>>> t = Test(10)
+>>> t.value
+
+Traceback (most recent call last):
+  File "<pyshell#471>", line 1, in <module>
+    t.value
+AttributeError: 'Test' object has no attribute 'value'
+>>> t.__value
+
+Traceback (most recent call last):
+  File "<pyshell#472>", line 1, in <module>
+    t.__value
+AttributeError: 'Test' object has no attribute '__value'
+>>> t._Test__value
+10
+>>> # Two underscores produces a syntax transformation called "name mangling"
+>>> # The goal of name mangling is to prevent collisions in names between parent and child classes
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.7% percent grade
+
+A circle with bounding box diagonal 30
+has a radius of 10.6066017178
+an area of 353.429173529
+and a perimeter of 66.6432440724
+
+>>> c = Circle(1)
+>>> c.ardius
+
+Traceback (most recent call last):
+  File "<pyshell#477>", line 1, in <module>
+    c.ardius
+AttributeError: 'Circle' object has no attribute 'ardius'
+>>> c.radius
+1.0
+>>> vars(c)
+{'diameter': 2.0}
+>>> c.radius = 10
+>>> c.radius
+10.0
+>>> vars(c)
+{'diameter': 20.0}
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.7% percent grade
+
+A circle with bounding box diagonal 30
+has a radius of 10.6066017178
+an area of 353.429173529
+and a perimeter of 66.6432440724
+
+>>> vars(c).keys()
+['diameter']
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.7% percent grade
+
+A circle with bounding box diagonal 30
+has a radius of 10.6066017178
+an area of 353.429173529
+and a perimeter of 66.6432440724
+
+>>> vars(c).keys()
+['diameter']
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100000 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.7% percent grade
+
+A circle with bounding box diagonal 30
+has a radius of 10.6066017178
+an area of 353.429173529
+and a perimeter of 66.6432440724
+
+>>> c
+Circle(10.606601717798211)
+>>> import sys
+>>> sys.getsizeof(c)
+64
+>>> sys.getsizeof(c.__dict__)
+280
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/client_code.py ========
+Tutorial from Circuitous™
+Circle class version: 0.1
+A circle with a radius of 10.0
+has an area of 314.159265359
+
+DARPA Grant Proposal to study the average area of random circles
+using Circuitous (TM) version 0.1
+preliminary study of 100000 random circles
+seeded with Jenny's number: 8675309
+The average area is 1.0
+
+Specifications for the cut template: [0.1, 0.2, 0.7]
+Circle #1
+A rubber circle with a cut radius of 0.1
+has a perimeter of 0.628318530718
+and a cold area of 0.0314159265359
+and a warm area of 0.0380132711084
+
+Circle #2
+A rubber circle with a cut radius of 0.2
+has a perimeter of 1.25663706144
+and a cold area of 0.125663706144
+and a warm area of 0.152053084434
+
+Circle #3
+A rubber circle with a cut radius of 0.7
+has a perimeter of 4.39822971503
+and a cold area of 1.53938040026
+and a warm area of 1.86265028431
+
+A tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 235.619449019
+
+A monster tire with an inner radius of 30.0
+has an inner area of 2827.43338823
+and outer perimeter of 282.743338823
+
+An inclinometer reading of 5°
+is a 8.7% percent grade
+
+A circle with bounding box diagonal 30
+has a radius of 10.6066017178
+an area of 353.429173529
+and a perimeter of 66.6432440724
+
+>>> sys.getsizeof(c)
+
+Traceback (most recent call last):
+  File "<pyshell#489>", line 1, in <module>
+    sys.getsizeof(c)
+NameError: name 'sys' is not defined
+>>> import sys
+>>> sys.getsizeof(c)
+56
+>>> c.__dict__
+
+Traceback (most recent call last):
+  File "<pyshell#492>", line 1, in <module>
+    c.__dict__
+AttributeError: 'Circle' object has no attribute '__dict__'
+>>> vars(c)
+
+Traceback (most recent call last):
+  File "<pyshell#493>", line 1, in <module>
+    vars(c)
+TypeError: vars() argument must have __dict__ attribute
+>>> c.diameter
+21.213203435596423
+>>> c.test = 10
+
+Traceback (most recent call last):
+  File "<pyshell#495>", line 1, in <module>
+    c.test = 10
+AttributeError: 'Circle' object has no attribute 'test'
+>>> # 64 + 280
+>>> # 56
+>>> 
+>>> 
+>>> 
+
+>>> 
