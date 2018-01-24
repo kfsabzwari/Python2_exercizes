@@ -123,6 +123,28 @@ print i.__class__
 print type(i).__bases__
 print type(i).mro()
 
+print '###########################################################'
+print 'def in def -- Enclosing scope.'
+
+def f(x):           # x in enclosing scope
+    y = x ** 2      # y in enclosing scope
+    def g(z):       # z in locals
+        return x, y, z, w, len  # w in globals, len in __builtins__
+    print g(10)
+
+w = 5
+
+f(2)
+
+print '###########################################################'
+print 'Closures'
+
+def f(x):
+    y = x ** 2
+    def g(z):
+        return x, y, z, w, len
+    return g
+
 
 
 
