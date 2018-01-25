@@ -23,9 +23,11 @@ def fib_fast(n):
         a, b = b, a + b
     return a
 
-import threading
+# import threading
+import multiprocessing
 
-lock = threading.Lock()
+# lock = threading.Lock()
+lock = multiprocessing.Lock()
 
 def show_fib(n):
     result = fib(n)
@@ -38,7 +40,17 @@ if __name__ == '__main__':
     # print fib(30)  # 2,692,537 calls
     # print fib(40)
 
+##    for n in range(40):
+##        thread = threading.Thread(target=show_fib, args=(n,))
+##        thread.start()
+
+    processes = []
+
     for n in range(40):
-        thread = threading.Thread(target=show_fib, args=(n,))
-        thread.start()
-    
+        process = multiprocessing.Process(target=show_fib, args=(n,))
+        process.start()
+        processes.append(process)
+
+    for process in processes:
+        process.join()
+
