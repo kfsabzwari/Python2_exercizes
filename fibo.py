@@ -23,16 +23,20 @@ def fib_fast(n):
         a, b = b, a + b
     return a
 
+import threading
+
+lock = threading.Lock()
+
 def show_fib(n):
-    print n, '-->', fib(n)
+    result = fib(n)
+    with lock:
+        print n, '-->', result
 
 if __name__ == '__main__':
     # print fib(10)  # 177 calls
     # print fib(20)  # 21,891 calls
     # print fib(30)  # 2,692,537 calls
     # print fib(40)
-
-    import threading
 
     for n in range(40):
         thread = threading.Thread(target=show_fib, args=(n,))
