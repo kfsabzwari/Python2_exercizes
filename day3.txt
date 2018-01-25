@@ -1,4 +1,4 @@
-Python 2.7.14 (default, Sep 22 2017, 00:05:22) 
+﻿Python 2.7.14 (default, Sep 22 2017, 00:05:22) 
 [GCC 4.2.1 Compatible Apple LLVM 7.3.0 (clang-703.0.31)] on darwin
 Type "copyright", "credits" or "license()" for more information.
 >>> import this
@@ -69,5 +69,2786 @@ Traceback (most recent call last):
 TypeError: vars() argument must have __dict__ attribute
 >>> s.__slots__
 ['value']
+>>> 
+>>> 
+
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/circuitous.py =========
+>>> c = Circle(100)
+>>> c.area()
+31415.926535897932
+>>> pi = 3
+>>> c.area()
+31415.926535897932
+>>> import math
+>>> math.pi
+3.141592653589793
+>>> old_pi = math.pi
+>>> math.pi = 3
+>>> c.area()
+30000.0
+>>> import math
+>>> c.area()
+30000.0
+>>> math.pi = old_pi
+>>> c.area()
+31415.926535897932
+>>> 
+>>> import algebra
+>>> algebra.pi
+
+Traceback (most recent call last):
+  File "<pyshell#43>", line 1, in <module>
+    algebra.pi
+AttributeError: 'module' object has no attribute 'pi'
+>>> algebra.pi
+
+Traceback (most recent call last):
+  File "<pyshell#44>", line 1, in <module>
+    algebra.pi
+AttributeError: 'module' object has no attribute 'pi'
+>>> algebra.PI
+3.1415
+>>> algebra.area(100)
+31415.0
+>>> import math
+>>> algebra.PI = math.pi
+>>> algebra.area(100)
+31415.926535897932
+>>> algebra.area_triangle(-5, 10)
+
+Traceback (most recent call last):
+  File "<pyshell#50>", line 1, in <module>
+    algebra.area_triangle(-5, 10)
+  File "/Users/grantj/Dropbox/Class22012018/algebra.py", line 56, in area_triangle
+    raise RuntimeError('Imaginary numbers not supported in Kronecker product spaces')
+RuntimeError: Imaginary numbers not supported in Kronecker product spaces
+>>> orig_area_triangle = algebra.area_triangle
+>>> def better_area_triangle(base, height):
+	"Wrapper to improve the error message."
+	try:
+		return orig_area_triangle(base, height)
+	except RuntimeError:
+		raise ValueError('negative base or height not supported')
+
+	
+>>> algebra.area_triangle = better_area_triangle
+>>> algebra.area_triangle(-5, 10)
+
+Traceback (most recent call last):
+  File "<pyshell#60>", line 1, in <module>
+    algebra.area_triangle(-5, 10)
+  File "<pyshell#58>", line 6, in better_area_triangle
+    raise ValueError('negative base or height not supported')
+ValueError: negative base or height not supported
+>>> algebra.area_triangle(10, 20)
+100.0
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/monkey_patch.py ========
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/monkey_patch.py", line 23, in <module>
+    algebra.area_triangle(-5, 10)
+  File "/Users/grantj/Dropbox/Class22012018/monkey_patch.py", line 18, in better_area_triangle
+    raise ValueError('negative base or height not supported')
+ValueError: negative base or height not supported
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/monkey_patch.py ========
+My sources tell me that π =
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/monkey_patch.py", line 23, in <module>
+    print u'My sources tell me that \N{greek small letter pi} =', algebra.pi
+AttributeError: 'module' object has no attribute 'pi'
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/monkey_patch.py ========
+My sources tell me that π = 3.14159265359
+and that the unit circle has area 3.14159265359
+The area of the 1st triangle is 17.5
+The area of the 2nd triangle is Doh! Sorry for the negative input
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/monkey_patch.py ========
+My sources tell me that π = 3.14159265359
+and that the unit circle has area 3.14159265359
+The area of the 1st triangle is 17.5
+The area of the 2nd triangle is Doh! Sorry for the negative input
+>>> 
+>>> algebra.quadratic(12, 8, 10)
+
+Traceback (most recent call last):
+  File "<pyshell#63>", line 1, in <module>
+    algebra.quadratic(12, 8, 10)
+  File "/Users/grantj/Dropbox/Class22012018/algebra.py", line 82, in quadratic
+    r = math.sqrt(discriminant)
+ValueError: math domain error
+>>> import math
+>>> math.sqrt(-10)
+
+Traceback (most recent call last):
+  File "<pyshell#65>", line 1, in <module>
+    math.sqrt(-10)
+ValueError: math domain error
+>>> orig_sqrt = math.sqrt
+>>> def better_sqrt(x):
+	"Wrap math.sqrt() to add support for negative values."
+	if x >= 0.0:
+		return orig_sqrt(x)
+	else:
+		return orig_sqrt(-x) * 1j
+
+	
+>>> better_sqrt(-4)
+2j
+>>> math.sqrt = better_sqrt
+>>> algebra.quadratic(12, 8, 10)
+((-0.3333333333333333+0.8498365855987974j), (-0.3333333333333333-0.8498365855987974j))
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/monkey_patch.py ========
+My sources tell me that π = 3.14159265359
+and that the unit circle has area 3.14159265359
+The area of the 1st triangle is 17.5
+The area of the 2nd triangle is Doh! Sorry for the negative input
+The solutions to 12x² + 23x + 10 = 0 are:
+(-0.6666666666666666, -1.25)
+The solutions to 12x² + 8x + 10 = 0 are:
+((-0.3333333333333333+0.8498365855987974j), (-0.3333333333333333-0.8498365855987974j))
+>>> 
+>>> 
+
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/property_demo.py =======
+>>> p = PriceRange(5, 10)
+
+Traceback (most recent call last):
+  File "<pyshell#79>", line 1, in <module>
+    p = PriceRange(5, 10)
+TypeError: __init__() takes exactly 4 arguments (3 given)
+>>> p = PriceRange('CSCO', 42, 43)
+>>> p.low
+42
+>>> p.high
+43
+>>> p.midpoint
+42
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/property_demo.py =======
+>>> p.symbol
+'CSCO'
+>>> p.low
+42.0
+>>> p.high
+43.0
+>>> p.midpoint
+42.5
+>>> vars(p)
+{'high': 43.0, 'symbol': 'CSCO', 'midpoint': 42.5, 'low': 42.0}
+>>> p.high = 45
+>>> p.midpoint
+42.5
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/property_demo.py =======
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 31, in <module>
+    p = PriceRange('CSCO', 42, 43)
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 23, in __init__
+    self.midpoint = (low + high) / 2.0
+AttributeError: can't set attribute
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/property_demo.py =======
+>>> p.low
+42.0
+>>> p.high
+43.0
+>>> p.midpoint
+42.5
+>>> p.high = 45
+>>> p.midpoint
+43.5
+>>> vars(p)
+{'high': 45, 'symbol': 'CSCO', 'low': 42.0}
+>>> p.get_midpoint()
+43.5
+>>> p
+<__main__.PriceRange object at 0x10e777110>
+>>> p.low = 'hello'
+>>> p.midpoint
+
+Traceback (most recent call last):
+  File "<pyshell#100>", line 1, in <module>
+    p.midpoint
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 25, in get_midpoint
+    return (self.low + self.high) / 2.0
+TypeError: cannot concatenate 'str' and 'int' objects
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/property_demo.py =======
+>>> p.low = 'hello'
+
+Traceback (most recent call last):
+  File "<pyshell#101>", line 1, in <module>
+    p.low = 'hello'
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 38, in set_low
+    self._low = float(value)
+ValueError: could not convert string to float: hello
+>>> float('hello')
+
+Traceback (most recent call last):
+  File "<pyshell#102>", line 1, in <module>
+    float('hello')
+ValueError: could not convert string to float: hello
+>>> p.low = '40.5'
+>>> p.low
+
+Traceback (most recent call last):
+  File "<pyshell#104>", line 1, in <module>
+    p.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+  File "/Users/grantj/Dropbox/Class22012018/property_demo.py", line 35, in get_low
+    return self.low
+
+=============================== RESTART: Shell ===============================
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/property_demo.py =======
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/property_demo.py =======
+>>> 
+>>> vars(p)
+{'high': 43.0, 'symbol': 'CSCO', '_low': 42.0}
+>>> p.low
+42.0
+>>> p.low = '40.5'
+>>> p.low
+40.5
+>>> p._low
+40.5
+>>> 
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/property_demo.py =======
+>>> p.low
+42.0
+>>> p.high
+43.0
+>>> vars(p)
+{'symbol': 'CSCO', '_high': 43.0, '_low': 42.0}
+>>> p.high = 45
+>>> p.midpoint
+43.5
+>>> p.low = '40.5'
+>>> p.midpoint
+42.75
+>>> vars(type(p)).keys()
+['get_low', '__module__', 'get_midpoint', 'set_low', 'midpoint', 'set_high', 'high', 'low', '__dict__', 'get_high', '__weakref__', '__doc__', '__init__']
+>>> def identity(value):
+	return value
+
+>>> def foo():
+	return 'i am in foo'
+
+>>> foo()
+'i am in foo'
+>>> foo = identity(foo)
+>>> foo()
+'i am in foo'
+>>> def decorator(func):
+	print 'in the decorator'
+	return func
+
+>>> def foo():
+	print 'in foo'
+
+	
+>>> bar = decorator(foo)
+in the decorator
+>>> bar()
+in foo
+>>> id(bar)
+4337933440
+>>> id(foo)
+4337933440
+>>> bar = decorator(foo)
+in the decorator
+>>> foo = decorator(foo)
+in the decorator
+>>> @decorator
+def foo():
+	print 'in foo'
+
+	
+in the decorator
+>>> foo()
+in foo
+>>> help(property)
+Help on class property in module __builtin__:
+
+class property(object)
+ |  property(fget=None, fset=None, fdel=None, doc=None) -> property attribute
+ |  
+ |  fget is a function to be used for getting an attribute value, and likewise
+ |  fset is a function for setting, and fdel a function for del'ing, an
+ |  attribute.  Typical use is to define a managed attribute x:
+ |  
+ |  class C(object):
+ |      def getx(self): return self._x
+ |      def setx(self, value): self._x = value
+ |      def delx(self): del self._x
+ |      x = property(getx, setx, delx, "I'm the 'x' property.")
+ |  
+ |  Decorators make defining new properties or modifying existing ones easy:
+ |  
+ |  class C(object):
+ |      @property
+ |      def x(self):
+ |          "I am the 'x' property."
+ |          return self._x
+ |      @x.setter
+ |      def x(self, value):
+ |          self._x = value
+ |      @x.deleter
+ |      def x(self):
+ |          del self._x
+ |  
+ |  Methods defined here:
+ |  
+ |  __delete__(...)
+ |      descr.__delete__(obj)
+ |  
+ |  __get__(...)
+ |      descr.__get__(obj[, type]) -> value
+ |  
+ |  __getattribute__(...)
+ |      x.__getattribute__('name') <==> x.name
+ |  
+ |  __init__(...)
+ |      x.__init__(...) initializes x; see help(type(x)) for signature
+ |  
+ |  __set__(...)
+ |      descr.__set__(obj, value)
+ |  
+ |  deleter(...)
+ |      Descriptor to change the deleter on a property.
+ |  
+ |  getter(...)
+ |      Descriptor to change the getter on a property.
+ |  
+ |  setter(...)
+ |      Descriptor to change the setter on a property.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  fdel
+ |  
+ |  fget
+ |  
+ |  fset
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __new__ = <built-in method __new__ of type object>
+ |      T.__new__(S, ...) -> a new object with type S, a subtype of T
+
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/property_demo.py =======
+42.0 43.0 42.5
+42.0 50.12 46.06
+>>> 
+>>> 
+
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> square.__name__
+'square'
+>>> square.__doc__
+'Return a value times itself.'
+>>> pow2 = square
+>>> pow2(5)
+25
+>>> pow2.__name__
+'square'
+>>> pow2.__doc__
+'Return a value times itself.'
+>>> id(square)
+4430955536
+>>> id(pow2)
+4430955536
+>>> vars(square).keys()
+[]
+>>> square.foo = 5
+>>> vars(square).keys()
+['foo']
+>>> square.foo
+5
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> pow2(6)
+36
+>>> type(pow2)
+<type 'function'>
+>>> type(square)
+<type 'function'>
+>>> help(square)
+Help on function square in module __main__:
+
+square(x)
+    Return a value times itself.
+
+>>> help(pow2)
+Help on function <lambda> in module __main__:
+
+<lambda> lambda x
+
+>>> pow2.__name__ = 'pow2'
+>>> pow2.__doc__ = 'Return a value to the second power'
+>>> help(pow2)
+Help on function pow2 in module __main__:
+
+pow2(x)
+    Return a value to the second power
+
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> grant = ToUpper('grant')
+>>> grant.word
+'grant'
+>>> grant()
+'GRANT'
+>>> grant.word = 'jenks'
+>>> grant()
+'JENKS'
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[<__main__.Dog object at 0x10de42c50>,
+ <__main__.Dog object at 0x10de42cd0>,
+ <__main__.Dog object at 0x10de42c90>]
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+['Rex is fetching the bone',
+ 'Rex is fetching the stick',
+ 'Rex is fetching the frisbee']
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+['Rex is fetching the bone',
+ 'Rex is fetching the stick',
+ 'Rex is fetching the frisbee']
+['Woof! Roscoe is barking', 'Woof! Loki is barking', 'Woof! Tesla is barking']
+>>> s = 'howdy'
+>>> s.upper()
+'HOWDY'
+>>> str.upper
+<method 'upper' of 'str' objects>
+>>> s.find('d')
+3
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+['Rex is fetching the bone',
+ 'Rex is fetching the stick',
+ 'Rex is fetching the frisbee']
+['Woof! Roscoe is barking', 'Woof! Loki is barking', 'Woof! Tesla is barking']
+['RED', 'GREEN', 'BLUE']
+[0, 1, 4, 6, -1, -1]
+>>> map(Dog, ['Roscoe', 'Loki', 'Tesla'])
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+>>> dogs = _
+>>> dogs[0]
+Dog('Roscoe')
+>>> dog = dogs[0]
+>>> dog.talk()
+'Woof! Roscoe is barking'
+>>> roscoe = dogs[0]
+>>> Dog.talk(roscoe)
+'Woof! Roscoe is barking'
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+['Rex is fetching the bone',
+ 'Rex is fetching the stick',
+ 'Rex is fetching the frisbee']
+['Woof! Roscoe is barking', 'Woof! Loki is barking', 'Woof! Tesla is barking']
+['RED', 'GREEN', 'BLUE']
+[0, 1, 4, 6, -1, -1]
+>>> class Golden(Dog):
+	def talk(self):
+		return 'Friendly Woof from Golden %s' % self.name
+
+	
+>>> g = Golden('Tesla')
+>>> g.talk()
+'Friendly Woof from Golden Tesla'
+>>> Dog.talk(g)
+'Woof! Tesla is barking'
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+['Rex is fetching the bone',
+ 'Rex is fetching the stick',
+ 'Rex is fetching the frisbee']
+['Woof! Roscoe is barking', 'Woof! Loki is barking', 'Woof! Tesla is barking']
+['RED', 'GREEN', 'BLUE']
+[0, 1, 4, 6, -1, -1]
+>>> negate(10)
+-10
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+['Rex is fetching the bone',
+ 'Rex is fetching the stick',
+ 'Rex is fetching the frisbee']
+['Woof! Roscoe is barking', 'Woof! Loki is barking', 'Woof! Tesla is barking']
+['RED', 'GREEN', 'BLUE']
+[0, 1, 4, 6, -1, -1]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+['Rex is fetching the bone',
+ 'Rex is fetching the stick',
+ 'Rex is fetching the frisbee']
+['Woof! Roscoe is barking', 'Woof! Loki is barking', 'Woof! Tesla is barking']
+['RED', 'GREEN', 'BLUE']
+[0, 1, 4, 6, -1, -1]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+['Rex is fetching the bone',
+ 'Rex is fetching the stick',
+ 'Rex is fetching the frisbee']
+['Woof! Roscoe is barking', 'Woof! Loki is barking', 'Woof! Tesla is barking']
+['RED', 'GREEN', 'BLUE']
+[0, 1, 4, 6, -1, -1]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+[Color(red=255, green=255, blue=0),
+ Color(red=255, green=0, blue=0),
+ Color(red=255, green=0, blue=255)]
+>>> yellow = colors[0]
+>>> yellow
+Color(red=255, green=255, blue=0)
+>>> yellow.red
+255
+>>> yellow[-1]
+0
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+['Rex is fetching the bone',
+ 'Rex is fetching the stick',
+ 'Rex is fetching the frisbee']
+['Woof! Roscoe is barking', 'Woof! Loki is barking', 'Woof! Tesla is barking']
+['RED', 'GREEN', 'BLUE']
+[0, 1, 4, 6, -1, -1]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+[Color(red=255, green=255, blue=0),
+ Color(red=255, green=0, blue=0),
+ Color(red=255, green=0, blue=255)]
+[0, 0, 255]
+[0, 0, 255]
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+['Rex is fetching the bone',
+ 'Rex is fetching the stick',
+ 'Rex is fetching the frisbee']
+['Woof! Roscoe is barking', 'Woof! Loki is barking', 'Woof! Tesla is barking']
+['RED', 'GREEN', 'BLUE']
+[0, 1, 4, 6, -1, -1]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+[Color(red=255, green=255, blue=0),
+ Color(red=255, green=0, blue=0),
+ Color(red=255, green=0, blue=255)]
+[0, 0, 255]
+[0, 0, 255]
+[0, 0, 255]
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+['Rex is fetching the bone',
+ 'Rex is fetching the stick',
+ 'Rex is fetching the frisbee']
+['Woof! Roscoe is barking', 'Woof! Loki is barking', 'Woof! Tesla is barking']
+['RED', 'GREEN', 'BLUE']
+[0, 1, 4, 6, -1, -1]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+[Color(red=255, green=255, blue=0),
+ Color(red=255, green=0, blue=0),
+ Color(red=255, green=0, blue=255)]
+[0, 0, 255]
+[0, 0, 255]
+[0, 0, 255]
+[0, 0, 255]
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+['Rex is fetching the bone',
+ 'Rex is fetching the stick',
+ 'Rex is fetching the frisbee']
+['Woof! Roscoe is barking', 'Woof! Loki is barking', 'Woof! Tesla is barking']
+['RED', 'GREEN', 'BLUE']
+[0, 1, 4, 6, -1, -1]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+[Color(red=255, green=255, blue=0),
+ Color(red=255, green=0, blue=0),
+ Color(red=255, green=0, blue=255)]
+[0, 0, 255]
+[0, 0, 255]
+[0, 0, 255]
+[0, 0, 255]
+[255, 0, 0]
+[255, 0, 0]
+[255, 0, 0]
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/callables.py =========
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+GRANT
+SHANNON
+BETHANY
+MARK
+[Dog('Roscoe'), Dog('Loki'), Dog('Tesla')]
+['Rex is fetching the bone',
+ 'Rex is fetching the stick',
+ 'Rex is fetching the frisbee']
+['Woof! Roscoe is barking', 'Woof! Loki is barking', 'Woof! Tesla is barking']
+['RED', 'GREEN', 'BLUE']
+[0, 1, 4, 6, -1, -1]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+[-5, -6, -7, -8, -9]
+[Color(red=255, green=255, blue=0),
+ Color(red=255, green=0, blue=0),
+ Color(red=255, green=0, blue=255)]
+[0, 0, 255]
+[0, 0, 255]
+[0, 0, 255]
+[0, 0, 255]
+[255, 0, 0]
+[255, 0, 0]
+[255, 0, 0]
+[255, 0, 0]
+>>> 
+>>> def square(x):
+	'Return a value times itself'
+	return x * x
+
+>>> import dis
+>>> dis.dis(square)
+  3           0 LOAD_FAST                0 (x)
+              3 LOAD_FAST                0 (x)
+              6 BINARY_MULTIPLY     
+              7 RETURN_VALUE        
+>>> square(10)
+100
+>>> square.__code__.co_code
+'|\x00\x00|\x00\x00\x14S'
+>>> ord('A')
+65
+>>> chr(65)
+'A'
+>>> map(ord, square.__code__.co_code)
+[124, 0, 0, 124, 0, 0, 20, 83]
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/how_eval_works.py =======
+25
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/how_eval_works.py", line 23, in <module>
+    print pow2(5)
+TypeError: 'Function' object is not callable
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/how_eval_works.py =======
+25
+25
+>>> i = 1020
+>>> b = '\x00\x10'
+>>> ord(b[0])
+0
+>>> ord(b[1])
+16
+>>> ord(b[0]) + ord(b[1]) * 256
+4096
+>>> 0x1000
+4096
+>>> 2 ** 16
+65536
+>>> type(square)
+<type 'function'>
+>>> square.__name__
+'square'
+>>> square.__doc__
+'Return a value times itself.'
+>>> square.__code__.co_code
+'|\x00\x00|\x00\x00\x14S'
+>>> '\xDE
+SyntaxError: EOL while scanning string literal
+>>> '\xDE\xAD\xBE\xEF'
+'\xde\xad\xbe\xef'
+>>> 0xDEADBEEF
+3735928559
+>>> s = '\xDE\xAD\xBE\xEF'
+>>> ord(s[0])
+222
+>>> ord(s[0]) * 2**24 + ord(s[1]) * 2**16 + ord(s[2]) * 2**8 + ord(s[3])
+3735928559
+>>> 
+>>> # https://docs.python.org/2/library/operator.html
+>>> 
+
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/how_eval_works.py =======
+25
+25
+>>> 
+>>> def upper_name(func):
+	func.__name__ = func.__name__.upper()
+	return func
+
+>>> def square(x):
+	'Return a value times itself'
+	return x * x
+
+>>> square(5)
+25
+>>> help(square)
+Help on function square in module __main__:
+
+square(x)
+    Return a value times itself
+
+>>> square = upper_name(square)
+>>> square(5)
+25
+>>> help(square)
+Help on function SQUARE in module __main__:
+
+SQUARE(x)
+    Return a value times itself
+
+>>> @upper_name
+def square(x):
+	'Return a value times itself'
+	return x * x
+
+>>> square(5)
+25
+>>> help(square)
+Help on function SQUARE in module __main__:
+
+SQUARE(x)
+    Return a value times itself
+
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/namespaces.py =========
+###########################################################
+locals() and globals()
+Globals: {'a': 1, 'b': <function b at 0x10c449f50>, '__builtins__': <module '__builtin__' (built-in)>, '__file__': '/Users/grantj/Dropbox/Class22012018/namespaces.py', 'pprint': <function pprint at 0x10c453230>, '__package__': None, '__name__': '__main__', '__doc__': 'Namespaces in Python\n\nOnly three ways to create a new namespace in Python:\n\n    1. modules (filename.py)\n    2. classes (class statement)\n    3. functions (def statement)\n\nLooking up variable names:\n\n    1. locals()\n    2. Enclosing function scope(s)\n    3. globals()\n    4. Builtins -- __builtins__\n    5. raise NameError\n\nLooking up object attributes:\n\n    1. Instance dictionary\n        vars(inst)\n    2. Class dictionary\n        vars(type(inst))\n    3. Search base classes\n        vars(base) for base in type(inst).mro()     (new-style, iterative)\n        vars(base) for base in type(inst).__bases__ (old-style, recursive)\n    4. raise AttributeError\n\n'}
+Locals in b: {'c': 3, 'd': 2}
+###########################################################
+def in for
+Count: 2
+Count: 2
+Count: 2
+###########################################################
+vars(obj) and dir(obj)
+Vars of E: {'__module__': '__main__', 'g': <function g at 0x10c453c08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x10c453b90>}
+{'__module__': '__main__', 'g': <function g at 0x10c453c08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x10c453b90>}
+Vars of e: {'f': 5}
+{'f': 5}
+Dir of e:
+['__class__',
+ '__delattr__',
+ '__dict__',
+ '__doc__',
+ '__format__',
+ '__getattribute__',
+ '__hash__',
+ '__init__',
+ '__module__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ 'f',
+ 'g']
+5
+Locals in E.g: {'h': 4, 'self': <__main__.E object at 0x10c44ed50>}
+###########################################################
+=, def, class, import
+Locals in f:
+{'T': <class __main__.T at 0x10c442598>,
+ 'g': <function g at 0x10c453c80>,
+ 'random': <module 'random' from '/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.pyc'>,
+ 'x': 5,
+ 'y': 25}
+###########################################################
+assign in class
+bar: 1
+###########################################################
+Inheritance
+6
+7
+Locals in I.g: {'k': 7, 'self': <__main__.I object at 0x10c44ed10>}
+Locals in E.g: {'h': 4, 'self': <__main__.I object at 0x10c44ed10>}
+<class '__main__.I'>
+<class '__main__.I'>
+(<class '__main__.E'>,)
+[<class '__main__.I'>, <class '__main__.E'>, <type 'object'>]
+###########################################################
+def in def -- Enclosing scope.
+(2, 4, 10, 5, <built-in function len>)
+>>> f(2)
+(2, 4, 10, 5, <built-in function len>)
+>>> w = 500
+>>> f(2)
+(2, 4, 10, 500, <built-in function len>)
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/namespaces.py =========
+###########################################################
+locals() and globals()
+Globals: {'a': 1, 'b': <function b at 0x10f84ef50>, '__builtins__': <module '__builtin__' (built-in)>, '__file__': '/Users/grantj/Dropbox/Class22012018/namespaces.py', 'pprint': <function pprint at 0x10f858230>, '__package__': None, '__name__': '__main__', '__doc__': 'Namespaces in Python\n\nOnly three ways to create a new namespace in Python:\n\n    1. modules (filename.py)\n    2. classes (class statement)\n    3. functions (def statement)\n\nLooking up variable names:\n\n    1. locals()\n    2. Enclosing function scope(s)\n    3. globals()\n    4. Builtins -- __builtins__\n    5. raise NameError\n\nLooking up object attributes:\n\n    1. Instance dictionary\n        vars(inst)\n    2. Class dictionary\n        vars(type(inst))\n    3. Search base classes\n        vars(base) for base in type(inst).mro()     (new-style, iterative)\n        vars(base) for base in type(inst).__bases__ (old-style, recursive)\n    4. raise AttributeError\n\n'}
+Locals in b: {'c': 3, 'd': 2}
+###########################################################
+def in for
+Count: 2
+Count: 2
+Count: 2
+###########################################################
+vars(obj) and dir(obj)
+Vars of E: {'__module__': '__main__', 'g': <function g at 0x10f858c08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x10f858b90>}
+{'__module__': '__main__', 'g': <function g at 0x10f858c08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x10f858b90>}
+Vars of e: {'f': 5}
+{'f': 5}
+Dir of e:
+['__class__',
+ '__delattr__',
+ '__dict__',
+ '__doc__',
+ '__format__',
+ '__getattribute__',
+ '__hash__',
+ '__init__',
+ '__module__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ 'f',
+ 'g']
+5
+Locals in E.g: {'h': 4, 'self': <__main__.E object at 0x10f853dd0>}
+###########################################################
+=, def, class, import
+Locals in f:
+{'T': <class __main__.T at 0x10f847598>,
+ 'g': <function g at 0x10f858c80>,
+ 'random': <module 'random' from '/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.pyc'>,
+ 'x': 5,
+ 'y': 25}
+###########################################################
+assign in class
+bar: 1
+###########################################################
+Inheritance
+6
+7
+Locals in I.g: {'k': 7, 'self': <__main__.I object at 0x10f853d90>}
+Locals in E.g: {'h': 4, 'self': <__main__.I object at 0x10f853d90>}
+<class '__main__.I'>
+<class '__main__.I'>
+(<class '__main__.E'>,)
+[<class '__main__.I'>, <class '__main__.E'>, <type 'object'>]
+###########################################################
+def in def -- Enclosing scope.
+(2, 4, 10, 5, <built-in function len>)
+###########################################################
+Closures
+>>> h = f(2)
+>>> type(h)
+<type 'function'>
+>>> h.__name__
+'g'
+>>> h(3)
+(2, 4, 3, 5, <built-in function len>)
+>>> def mylen(seq):
+	return 0
+
+>>> len = mylen
+>>> h(3)
+(2, 4, 3, 5, <function mylen at 0x10f858e60>)
+>>> f(2)(3)
+(2, 4, 3, 5, <function mylen at 0x10f858e60>)
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/namespaces.py =========
+###########################################################
+locals() and globals()
+Globals: {'a': 1, 'b': <function b at 0x10db6bf50>, '__builtins__': <module '__builtin__' (built-in)>, '__file__': '/Users/grantj/Dropbox/Class22012018/namespaces.py', 'pprint': <function pprint at 0x10db73230>, '__package__': None, '__name__': '__main__', '__doc__': 'Namespaces in Python\n\nOnly three ways to create a new namespace in Python:\n\n    1. modules (filename.py)\n    2. classes (class statement)\n    3. functions (def statement)\n\nLooking up variable names:\n\n    1. locals()\n    2. Enclosing function scope(s)\n    3. globals()\n    4. Builtins -- __builtins__\n    5. raise NameError\n\nLooking up object attributes:\n\n    1. Instance dictionary\n        vars(inst)\n    2. Class dictionary\n        vars(type(inst))\n    3. Search base classes\n        vars(base) for base in type(inst).mro()     (new-style, iterative)\n        vars(base) for base in type(inst).__bases__ (old-style, recursive)\n    4. raise AttributeError\n\n'}
+Locals in b: {'c': 3, 'd': 2}
+###########################################################
+def in for
+Count: 2
+Count: 2
+Count: 2
+###########################################################
+vars(obj) and dir(obj)
+Vars of E: {'__module__': '__main__', 'g': <function g at 0x10db73c08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x10db73b90>}
+{'__module__': '__main__', 'g': <function g at 0x10db73c08>, '__dict__': <attribute '__dict__' of 'E' objects>, '__weakref__': <attribute '__weakref__' of 'E' objects>, '__doc__': None, '__init__': <function __init__ at 0x10db73b90>}
+Vars of e: {'f': 5}
+{'f': 5}
+Dir of e:
+['__class__',
+ '__delattr__',
+ '__dict__',
+ '__doc__',
+ '__format__',
+ '__getattribute__',
+ '__hash__',
+ '__init__',
+ '__module__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ 'f',
+ 'g']
+5
+Locals in E.g: {'h': 4, 'self': <__main__.E object at 0x10db70dd0>}
+###########################################################
+=, def, class, import
+Locals in f:
+{'T': <class __main__.T at 0x10db64598>,
+ 'g': <function g at 0x10db73c80>,
+ 'random': <module 'random' from '/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.pyc'>,
+ 'x': 5,
+ 'y': 25}
+###########################################################
+assign in class
+bar: 1
+###########################################################
+Inheritance
+6
+7
+Locals in I.g: {'k': 7, 'self': <__main__.I object at 0x10db70d90>}
+Locals in E.g: {'h': 4, 'self': <__main__.I object at 0x10db70d90>}
+<class '__main__.I'>
+<class '__main__.I'>
+(<class '__main__.E'>,)
+[<class '__main__.I'>, <class '__main__.E'>, <type 'object'>]
+###########################################################
+def in def -- Enclosing scope.
+(2, 4, 10, 5, <built-in function len>)
+###########################################################
+Closures
+<type 'function'>
+g
+(2, 4, 3, 5, <built-in function len>)
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+>>> f
+<closed file 'notes/hamlet.txt', mode 'r' at 0x10e7a8030>
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/with_demo.py", line 10, in <module>
+    print bug_i_am_not_defined(play)
+NameError: name 'bug_i_am_not_defined' is not defined
+>>> f
+<closed file 'notes/hamlet.txt', mode 'r' at 0x1094a1030>
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/with_demo.py", line 10, in <module>
+    print bug_i_am_not_defined(play)
+NameError: name 'bug_i_am_not_defined' is not defined
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+>>> f
+<closed file 'notes/hamlet.txt', mode 'r' at 0x10b461540>
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/with_demo.py", line 18, in <module>
+    print fdsa(play)
+NameError: name 'fdsa' is not defined
+>>> f
+<closed file 'notes/hamlet.txt', mode 'r' at 0x10bc94540>
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/with_demo.py", line 23, in <module>
+    print fdsa(play)
+NameError: name 'fdsa' is not defined
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+>>> c = CM(10)
+Initializing with x= 10
+>>> with c:
+	pass
+
+
+Traceback (most recent call last):
+  File "<pyshell#270>", line 1, in <module>
+    with c:
+AttributeError: __exit__
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+>>> c = CM(10)
+Initializing with x= 10
+>>> with c:
+	pass
+
+
+Traceback (most recent call last):
+  File "<pyshell#274>", line 1, in <module>
+    with c:
+AttributeError: __enter__
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+>>> c = CM(10)
+Initializing with x= 10
+>>> with c:
+	pass
+
+Entering with x= 10
+
+Traceback (most recent call last):
+  File "<pyshell#278>", line 2, in <module>
+    pass
+TypeError: __exit__() takes exactly 1 argument (4 given)
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+>>> c = CM(10)
+Initializing with x= 10
+>>> with c:
+	pass
+
+Entering with x= 10
+Exiting with x= 10
+>>> with c:
+	pass
+
+Entering with x= 10
+Exiting with x= 10
+>>> c.x = 100
+>>> with c:
+	pass
+
+Entering with x= 100
+Exiting with x= 100
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+finish
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+finish
+
+Case 2: Case with a handled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+finish
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+finish
+
+Case 2: Case with a handled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/with_demo.py", line 74, in <module>
+    raise KeyError('henry')
+KeyError: 'henry'
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+finish
+
+Case 2: Case with a handled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/with_demo.py", line 73, in <module>
+    raise KeyError('henry')
+KeyError: 'henry'
+>>> def test():
+	print 'in test'
+
+	
+>>> test()
+in test
+>>> f = test()
+in test
+>>> f
+>>> type(f)
+<type 'NoneType'>
+>>> print f
+None
+>>> bool(None)
+False
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+Exception type: None
+Returning None which is a falsey value
+finish
+
+Case 2: Case with a handled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.KeyError'>
+Returning None which is a falsey value
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/with_demo.py", line 75, in <module>
+    raise KeyError('henry')
+KeyError: 'henry'
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+Exception type: None
+Returning None which is a falsey value
+finish
+
+Case 2: Case with a handled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('henry',)
+Return True to indicate the exception was handled
+finish
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+Exception type: None
+Returning None which is a falsey value
+finish
+
+Case 2: Case with a handled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('henry',)
+Return True to indicate the exception was handled
+finish
+
+Case 3: Case with an unhandled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.IndexError'>
+Returning None which is a falsey value
+Caught the IndexError outside the with-statement
+finish
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+Exception type: None
+Returning None which is a falsey value
+finish
+
+Case 2: Case with a handled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('henry',)
+Return True to indicate the exception was handled
+finish
+
+Case 3: Case with an unhandled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.IndexError'>
+Returning None which is a falsey value
+Caught the IndexError outside the with-statement
+finish
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+Exception type: None
+Returning None which is a falsey value
+finish
+
+Case 2: Case with a handled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('henry',)
+Return True to indicate the exception was handled
+finish
+
+Case 3: Case with an unhandled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.IndexError'>
+Returning None which is a falsey value
+Caught the IndexError outside the with-statement
+finish
+202238
+>>> f
+<closed file 'notes/hamlet.txt'>
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+Exception type: None
+Returning None which is a falsey value
+finish
+
+Case 2: Case with a handled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('henry',)
+Return True to indicate the exception was handled
+finish
+
+Case 3: Case with an unhandled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.IndexError'>
+Returning None which is a falsey value
+Caught the IndexError outside the with-statement
+finish
+
+202238
+202238
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+Exception type: None
+Returning None which is a falsey value
+finish
+
+Case 2: Case with a handled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('henry',)
+Return True to indicate the exception was handled
+finish
+
+Case 3: Case with an unhandled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.IndexError'>
+Returning None which is a falsey value
+Caught the IndexError outside the with-statement
+finish
+
+202238
+202238
+inside your critical region
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+Exception type: None
+Returning None which is a falsey value
+finish
+
+Case 2: Case with a handled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('henry',)
+Return True to indicate the exception was handled
+finish
+
+Case 3: Case with an unhandled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.IndexError'>
+Returning None which is a falsey value
+Caught the IndexError outside the with-statement
+finish
+
+202238
+202238
+inside your critical region
+inside your critical region
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+Exception type: None
+Returning None which is a falsey value
+finish
+
+Case 2: Case with a handled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('henry',)
+Return True to indicate the exception was handled
+finish
+
+Case 3: Case with an unhandled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.IndexError'>
+Returning None which is a falsey value
+Caught the IndexError outside the with-statement
+finish
+
+202238
+202238
+inside your critical region
+inside your critical region
+>>> import threading
+>>> lock = threading.Lock()
+>>> import time
+>>> time.sleep(1)
+>>> lock.release()
+
+Traceback (most recent call last):
+  File "<pyshell#303>", line 1, in <module>
+    lock.release()
+error: release unlocked lock
+>>> lock.rlease()
+
+Traceback (most recent call last):
+  File "<pyshell#304>", line 1, in <module>
+    lock.rlease()
+AttributeError: 'thread.lock' object has no attribute 'rlease'
+>>> lock.release()
+
+Traceback (most recent call last):
+  File "<pyshell#305>", line 1, in <module>
+    lock.release()
+error: release unlocked lock
+>>> lock.acquire()
+True
+>>> lock.release()
+>>> def test():
+	print 'starting'
+	lock.acquire()
+	print 'acquired'
+	time.sleep(5)
+	print 'releasing the lock'
+	lock.release()
+
+	
+>>> thread = threading.Thread(target=test)
+>>> thread.run()
+starting
+acquired
+releasing the lock
+
+
+>>> print 'hello'
+hello
+>>> thread = threading.Thread(target=test)
+>>> thread.run()
+starting
+acquired
+releasing the lock
+print 'hello'
+print 'byte'
+>>> 
+>>> def test():
+	print 'starting'
+	lock.acquire()
+	print 'acquired'
+	time.sleep(10)
+	print 'releasing the lock'
+	lock.release()
+
+	
+>>> thread = threading.Thread(target=test)
+>>> thread.run()
+starting
+acquired
+releasing the lock
+lock.release()
+>>> 
+>>> 
+========= RESTART: /Users/grantj/Dropbox/Class22012018/with_demo.py =========
+202238
+202238
+inside your critical region
+inside your critical region
+
+Case 1: Normal case with no exceptions
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+At the end
+Exiting with x= 10
+Exception type: None
+Returning None which is a falsey value
+finish
+
+Case 2: Case with a handled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.KeyError'>
+Caught a KeyError
+The arguments are ('henry',)
+Return True to indicate the exception was handled
+finish
+
+Case 3: Case with an unhandled exception
+start
+Initializing with x= 10
+Entering with x= 10
+In the beginning
+In the middle with y= 42
+Exiting with x= 10
+Exception type: <type 'exceptions.IndexError'>
+Returning None which is a falsey value
+Caught the IndexError outside the with-statement
+finish
+
+202238
+202238
+inside your critical region
+inside your critical region
+>>> 
+=============================== RESTART: Shell ===============================
+>>> import threading
+>>> lock = threading.Lock()
+>>> import time
+>>> def test():
+	print 'starting'
+	lock.acquire()
+	print 'acquired'
+	time.sleep(10)
+	print 'releasing the lock'
+	lock.release()
+
+	
+>>> thread = threading.Thread(target=test)
+>>> thread.run()
+starting
+acquired
+releasing the lock
+
+
+
+
+print 'hello'
+>>> 1/0
+
+Traceback (most recent call last):
+  File "<pyshell#334>", line 1, in <module>
+    1/0
+ZeroDivisionError: integer division or modulo by zero
+>>> True or 1/0
+True
+>>> a = 5
+>>> b = 10
+>>> a is b
+False
+>>> nan = float('nan')
+>>> nan == nan
+False
+>>> nan is nan
+True
+>>> 1/0
+
+Traceback (most recent call last):
+  File "<pyshell#342>", line 1, in <module>
+    1/0
+ZeroDivisionError: integer division or modulo by zero
+>>> lambda: 1/0
+<function <lambda> at 0x10e37e2a8>
+>>> f = _
+>>> f()
+
+Traceback (most recent call last):
+  File "<pyshell#345>", line 1, in <module>
+    f()
+  File "<pyshell#343>", line 1, in <lambda>
+    lambda: 1/0
+ZeroDivisionError: integer division or modulo by zero
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/abc_demo.py ==========
+5
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/abc_demo.py ==========
+5
+H t i
+>>> d.seq[0]
+'H'
+>>> d.seq[2]
+'t'
+>>> d.seq[4]
+'i'
+>>> for something in d:
+	print something
+
+	
+H
+t
+i
+g
+r
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/abc_demo.py ==========
+5
+H t i
+6
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/abc_demo.py ==========
+5
+H t i
+6
+C c i
+>>> list(t)
+['C', 'c', 'i', 'a', 's', 'e']
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/abc_demo.py ==========
+5
+H t i
+6
+C c i
+['C', 'c', 'i', 'a', 's', 'e']
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/abc_demo.py ==========
+5
+H t i
+6
+C c i
+['C', 'c', 'i', 'a', 's', 'e']
+>>> d.uppercase()
+'HTIGR'
+>>> t.uppercase()
+
+Traceback (most recent call last):
+  File "<pyshell#354>", line 1, in <module>
+    t.uppercase()
+AttributeError: 'TripleSeq' object has no attribute 'uppercase'
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/abc_demo.py ==========
+5
+H t i
+6
+C c i
+['C', 'c', 'i', 'a', 's', 'e']
+>>> d.uppercase()
+'HTIGR'
+>>> t.uppercase()
+'CCIASE'
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/abc_demo.py ==========
+5
+H t i
+HTIGR
+************************************************************
+6
+C c i
+['C', 'c', 'i', 'a', 's', 'e']
+CCIASE
+>>> c = Capper()
+>>> c.uppercase()
+
+Traceback (most recent call last):
+  File "<pyshell#358>", line 1, in <module>
+    c.uppercase()
+  File "/Users/grantj/Dropbox/Class22012018/abc_demo.py", line 11, in uppercase
+    return ''.join(self).upper()
+TypeError: can only join an iterable
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/abc_demo.py ==========
+5
+H t i
+HTIGR
+************************************************************
+6
+C c i
+['C', 'c', 'i', 'a', 's', 'e']
+CCIASE
+>>> u = Uncapper()
+
+Traceback (most recent call last):
+  File "<pyshell#359>", line 1, in <module>
+    u = Uncapper()
+TypeError: Can't instantiate abstract class Uncapper with abstract methods __getitem__, __len__
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/abc_demo.py ==========
+5
+H t i
+HTIGR
+htigr
+************************************************************
+6
+C c i
+['C', 'c', 'i', 'a', 's', 'e']
+CCIASE
+cciase
+>>> TripleSeq.mro()
+[<class '__main__.TripleSeq'>, <class '__main__.Capper'>, <class '__main__.Uncapper'>, <type 'object'>]
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/abc_demo.py ==========
+5
+H t i
+HTIGR
+htigr
+************************************************************
+6
+C c i
+['C', 'c', 'i', 'a', 's', 'e']
+CCIASE
+cciase
+>>> d.count('t')
+1
+>>> s = Sequence()
+
+Traceback (most recent call last):
+  File "<pyshell#362>", line 1, in <module>
+    s = Sequence()
+TypeError: Can't instantiate abstract class Sequence with abstract methods __getitem__, __len__
+>>> class Test(object):
+	pass
+
+>>> type(Test)
+<type 'type'>
+>>> type(Uncapper)
+<class 'abc.ABCMeta'>
 >>> 
 >>> 
