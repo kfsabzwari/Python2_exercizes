@@ -6,6 +6,9 @@
 
 """
 
+from decorator_school import add_caching
+
+@add_caching
 def fib(n):
     if n == 0:
         return 1
@@ -14,5 +17,14 @@ def fib(n):
     else:
         return fib(n-1) + fib(n-2)
 
+def fib_fast(n):
+    a, b = 1, 1
+    for i in range(n):
+        a, b = b, a + b
+    return a
+
 if __name__ == '__main__':
-    print fib(10)
+    # print fib(10)  # 177 calls
+    # print fib(20)  # 21,891 calls
+    # print fib(30)  # 2,692,537 calls
+    print fib(40)
