@@ -407,3 +407,285 @@ the answer is 0.0
 >>> cache
 {3: -3, 4: -4}
 >>> 
+
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/decorator_school.py ======
+>>> help(big_func)
+Help on function big_func in module __main__:
+
+big_func(x)
+    Simulate a big, slow, expensive function.
+
+>>> big_func(10)
+-10
+>>> big_func(10)
+-10
+>>> cache
+
+Traceback (most recent call last):
+  File "<pyshell#199>", line 1, in <module>
+    cache
+NameError: name 'cache' is not defined
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/decorator_school.py ======
+>>> big_func(10)
+-10
+>>> big_func(10)
+-10
+>>> big_func.cache
+{10: -10}
+>>> test_cases = []
+>>> def register(func):
+	test_cases.append(func)
+
+	
+>>> @register
+def test_addition():
+	assert 1 + 2 == 3
+
+	
+>>> test_cases
+[<function test_addition at 0x10bc40b90>]
+>>> test_addition
+>>> test_addition()
+
+Traceback (most recent call last):
+  File "<pyshell#213>", line 1, in <module>
+    test_addition()
+TypeError: 'NoneType' object is not callable
+>>> def register(func):
+	test_cases.append(func)
+	return func
+
+>>> class TestSuite(object):
+	def __init__(self):
+		self.test_cases = []
+	def run(self):
+		for test in self.test_cases:
+			test()
+	def add(self, test_func):
+		self.test_cases.append(test_func)
+		return test_func
+
+	
+>>> suite = TestSuite()
+>>> @suite.add
+def test_addition():
+	assert 1 + 2 == 3
+
+	
+>>> @suite.add
+def test_subtraction():
+	assert 6 - 3 == 3
+
+	
+>>> suite.test_cases
+[<function test_addition at 0x10bc40b18>, <function test_subtraction at 0x10bc4e7d0>]
+>>> suite.run()
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/decorator_school.py ======
+>>> help(square)
+Help on function square in module __main__:
+
+square(x)
+    Return a value times itself.
+
+>>> help(big_func)
+Help on function big_func in module __main__:
+
+big_func(x)
+    Simulate a big, slow, expensive function.
+
+>>> square(10)
+square() called with 10
+the answer is 100
+100
+>>> big_func(5)
+-5
+>>> big_func(5)
+-5
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/decorator_school.py ======
+>>> square(5)
+square() called with 5
+the answer is 25
+25
+>>> square(5)
+25
+>>> big_func(5)
+big_func() called with 5
+the answer is -5
+-5
+>>> big_func(5)
+big_func() called with 5
+the answer is -5
+-5
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/decorator_school.py ======
+square() called with 3
+the answer is 9
+big_func() called with 10
+the answer is -10
+big_func() called with 10
+the answer is -10
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/star_school.py ========
+32
+32
+32
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/star_school.py ========
+32
+32
+32
+32
+32
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/star_school.py ========
+32
+32
+32
+32
+32
+32
+32
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/star_school.py ========
+32
+32
+32
+32
+32
+32
+32
+>>> f(5, 10)
+15
+>>> f(5, 10, 20)
+35
+>>> f(5, 10, 20, 30)
+65
+>>> f(5, 10, 20, d=30)
+65
+>>> f(a=5, 10, 20, d=30)
+SyntaxError: non-keyword arg after keyword arg
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/star_school.py ========
+32
+32
+32
+32
+32
+32
+32
+>>> f(1, 2, 3, 4)
+1
+2
+(3, 4)
+{}
+>>> f(1, 2, 3, 4, apple=10, banana=20)
+1
+2
+(3, 4)
+{'apple': 10, 'banana': 20}
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/star_school.py ========
+32
+32
+32
+32
+32
+32
+32
+10
+20
+(30, 40, 50)
+{'y': 2, 'x': 1, 'z': 3}
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/star_school.py ========
+32
+32
+32
+32
+32
+32
+32
+10
+20
+(30, 40, 50)
+{'y': 2, 'x': 1, 'z': 3}
+function called with: (2, 5) {}
+the answer is 32
+function called with: () {'base': 2, 'exp': 5}
+the answer is 32
+function called with: (2,) {'exp': 5}
+the answer is 32
+32 32 32
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/decorator_school.py ======
+square() called with (3,)
+the answer is 9
+big_func() called with (10,)
+the answer is -10
+big_func() called with (10,)
+the answer is -10
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/duck_typing.py ========
+202238
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/duck_typing.py ========
+202238
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/duck_typing.py ========
+202238
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/duck_typing.py ========
+202238
+fake file initialized
+fake file read
+fake file closed
+17
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/duck_typing.py ========
+202238
+fake file initialized
+fake file read
+fake file closed
+17
+>>> 
+======== RESTART: /Users/grantj/Dropbox/Class22012018/duck_typing.py ========
+202238
+fake file initialized
+fake file read
+fake file closed
+17
+14
+>>> isinstance(s, file)
+False
+>>> def test():
+	print 'inside test'
+
+	
+>>> test()
+inside test
+>>> test
+<function test at 0x10b049398>
+>>> def test():
+	print 'inside another test'
+
+	
+>>> test
+<function test at 0x10b049410>
+>>> m = [0, 1, 2]
+>>> del m
+>>> m = [0, 1, 2]
+>>> m.append(m)
+>>> m
+[0, 1, 2, [...]]
+>>> del m[-1]
+>>> m
+[0, 1, 2]
+>>> m.append(m)
+>>> m
+[0, 1, 2, [...]]
+>>> del m
+>>> 
