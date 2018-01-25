@@ -1,0 +1,81 @@
+Python 2.7.14 (default, Sep 22 2017, 00:05:22) 
+[GCC 4.2.1 Compatible Apple LLVM 7.3.0 (clang-703.0.31)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+
+>>> 
+
+>>> import threading
+>>> import time
+>>> lock = threading.Lock()
+>>> lock.acquire()
+True
+>>> lock.release()
+>>> with lock:
+	print 'critical region'
+
+	
+critical region
+>>> lock.release()
+
+Traceback (most recent call last):
+  File "<pyshell#10>", line 1, in <module>
+    lock.release()
+error: release unlocked lock
+>>> def test():
+	print 'starting'
+	lock.acquire()
+	print 'acquired'
+	time.sleep(10)
+	print 'releasing'
+	lock.release()
+	print 'finished'
+
+	
+>>> thread = threading.Thread(target=test)
+>>> thread.start()
+starting
+>>> 
+acquired
+
+>>> 
+>>> 
+>>> 
+>>> 
+>>> releasing
+finished
+
+>>> thread = threading.Thread(target=test)
+>>> lock.acquire()
+True
+>>> thread.start()
+starting
+>>> 
+
+>>> lock.release()
+acquired
+>>> lock.acquire()
+releasing
+finishedTrue
+
+>>> lock.release()
+>>> thread = threading.Thread(target=test)
+>>> thread.start()
+starting
+>>> 
+acquired
+
+>>> lock.release()
+>>> releasing
+Exception in thread Thread-3:
+Traceback (most recent call last):
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py", line 754, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "<pyshell#19>", line 7, in test
+error: release unlocked lock
+
+
+>>> 
+>>> 
