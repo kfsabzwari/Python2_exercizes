@@ -79,3 +79,331 @@ error: release unlocked lock
 
 >>> 
 >>> 
+
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/super_example.py =======
+>>> Contract
+<class '__main__.Contract'>
+>>> Contract()
+
+Traceback (most recent call last):
+  File "<pyshell#43>", line 1, in <module>
+    Contract()
+TypeError: Can't instantiate abstract class Contract with abstract methods check
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/super_example.py =======
+>>> integers = Integer()
+>>> integers.check(5)
+check value is integer
+>>> integers.check(1.0)
+check value is integer
+
+Traceback (most recent call last):
+  File "<pyshell#46>", line 1, in <module>
+    integers.check(1.0)
+  File "/Users/grantj/Dropbox/Class22012018/super_example.py", line 20, in check
+    assert isinstance(value, int)
+AssertionError
+>>> assert False
+
+Traceback (most recent call last):
+  File "<pyshell#47>", line 1, in <module>
+    assert False
+AssertionError
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/super_example.py =======
+check value is integer
+check value is positive
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/super_example.py =======
+check value is integer
+check value is positive
+>>> posints = PositiveInteger()
+>>> posints.check(5)
+check value is positive
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/super_example.py =======
+check value is integer
+check contract
+check value is positive
+check contract
+>>> posints = PositiveInteger()
+>>> posints.check(10)
+check value is positive
+check contract
+>>> 
+======= RESTART: /Users/grantj/Dropbox/Class22012018/super_example.py =======
+check value is integer
+check contract
+check value is positive
+check contract
+>>> posints.check(10)
+check value is positive
+check value is integer
+check contract
+>>> PositiveInteger.mro()
+[<class '__main__.PositiveInteger'>, <class '__main__.Positive'>, <class '__main__.Integer'>, <class '__main__.Contract'>, <type 'object'>]
+>>> class Test:
+	pass
+
+>>> Test
+<class __main__.Test at 0x109e793f8>
+>>> del Test
+>>> def f(x):
+	y = x**2
+	import random
+	class Switch:
+		pass
+	def g(z):
+		pass
+	print locals()
+
+	
+>>> f(5)
+{'y': 25, 'x': 5, 'Switch': <class __main__.Switch at 0x109e79460>, 'random': <module 'random' from '/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.pyc'>, 'g': <function g at 0x109e91050>}
+>>> def f(x):
+	y = x ** 2
+	def g(z):
+		return x, y, z, w, len
+	print g(10)
+
+	
+>>> f(5)
+
+Traceback (most recent call last):
+  File "<pyshell#75>", line 1, in <module>
+    f(5)
+  File "<pyshell#74>", line 5, in f
+    print g(10)
+  File "<pyshell#74>", line 4, in g
+    return x, y, z, w, len
+NameError: global name 'w' is not defined
+>>> w = 100
+>>> f(5)
+(5, 25, 10, 100, <built-in function len>)
+>>> def f(x):
+	y = x ** 2
+	def g(z):
+		return x, y, z, w, len
+	return g
+
+>>> h = f(2)
+>>> type(h)
+<type 'function'>
+>>> h.__name__
+'g'
+>>> h(10)
+(2, 4, 10, 100, <built-in function len>)
+>>> def f(x):
+	def g(y):
+		return x, y
+	return g
+
+>>> h = f(1)
+>>> i = f(2)
+>>> j = f(3)
+>>> [type(func) for func in [h, i, j]]
+[<type 'function'>, <type 'function'>, <type 'function'>]
+>>> [func.__name__ for func in [h, i, j]]
+['g', 'g', 'g']
+>>> [func.__doc__ for func in [h, i, j]]
+[None, None, None]
+>>> [id(func) for func in [h, i, j]]
+[4461238824, 4461236304, 4461238944]
+>>> [func.__code__.co_code for func in [h, i, j]]
+['\x88\x00\x00|\x00\x00f\x02\x00S', '\x88\x00\x00|\x00\x00f\x02\x00S', '\x88\x00\x00|\x00\x00f\x02\x00S']
+>>> [func(10) for func in [h, i, j]]
+[(1, 10), (2, 10), (3, 10)]
+>>> [func.__closure__[0].cell_contents for func in [h, i, j]]
+[1, 2, 3]
+>>> def add2(x):
+	return 2 + x
+
+>>> add2(5)
+7
+>>> def add3(x):
+	return 3 + x
+
+>>> add3(10)
+13
+>>> def make_adder(y):
+	def add_constant(x):
+		return y + x
+
+	
+>>> add_two = make_adder(2)
+>>> type(add_two)
+<type 'NoneType'>
+>>> add_two(5)
+
+Traceback (most recent call last):
+  File "<pyshell#113>", line 1, in <module>
+    add_two(5)
+TypeError: 'NoneType' object is not callable
+>>> def make_adder(y):
+	def add_constant(x):
+		return y + x
+	return add_constant
+
+>>> add_two = make_adder(2)
+>>> add_two(5)
+7
+>>> add_three = make_adder(3)
+>>> add_three(10)
+13
+>>> add_one, add_two, add_three, add_four = map(make_adder, range(1, 5))
+>>> 
+>>> add_four(0)
+4
+>>> type(add_four)
+<type 'function'>
+>>> import math
+>>> math.cos(0)
+1.0
+>>> math.cos(math.pi)
+-1.0
+>>> orig_cos = math.cos
+>>> def logging_cos(x):
+	"Wrapper around math.cos that logs inputs and outputs."
+	print 'cos() called with', x
+	answer = orig_cos(x)
+	print 'the answer is', answer
+	return answer
+
+>>> math.cos = logging_cos
+>>> math.cos(0)
+cos() called with 0
+the answer is 1.0
+1.0
+>>> orig_sin = math.sin
+>>> def logging_sin(x):
+	"Wrapper around math.sin that logs inputs and outputs."
+	print 'sin() called with', x
+	answer = orig_sin(x)
+	print 'the answer is', answer
+	return answer
+
+>>> math.sin = logging_sin
+>>> math.sin(0)
+sin() called with 0
+the answer is 0.0
+0.0
+>>> def add_logging(orig_func):
+	def logging_func(x):
+		'Wrapper around math functions that logs inputs and outputs'
+		print 'orig_func() called with', x
+		answer = orig_func(x)
+		print 'the answer is', answer
+		return answer
+	return logging_func
+
+>>> math.tan = add_logging(math.tan)
+>>> math.tan(0)
+orig_func() called with 0
+the answer is 0.0
+0.0
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/decorator_school.py ======
+>>> square(10)
+100
+>>> square = add_logging(square)
+>>> square(10)
+orig_func() called with 10
+the answer is 100
+100
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/decorator_school.py ======
+>>> square(10)
+orig_func() called with 10
+the answer is 100
+100
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/decorator_school.py ======
+>>> square(10)
+square() called with 10
+the answer is 100
+100
+>>> help(square)
+Help on function logging_func in module __main__:
+
+logging_func(x)
+    Wrapper around functions that logs inputs and outputs.
+
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/decorator_school.py ======
+>>> help(square)
+Help on function square in module __main__:
+
+square(x)
+    Return a value times itself.
+
+>>> square(10)
+square() called with 10
+the answer is 100
+100
+>>> import math
+>>> math.sin(0)
+0.0
+>>> help(math.sin)
+Help on built-in function sin in module math:
+
+sin(...)
+    sin(x)
+    
+    Return the sine of x (measured in radians).
+
+>>> math.sin = add_logging(math.sin)
+>>> help(math.sin)
+Help on function sin in module __main__:
+
+sin(x)
+    sin(x)
+    
+    Return the sine of x (measured in radians).
+
+>>> math.sin(0)
+sin() called with 0
+the answer is 0.0
+0.0
+>>> 
+====== RESTART: /Users/grantj/Dropbox/Class22012018/decorator_school.py ======
+>>> big_func(3)
+-3
+>>> big_func(3)
+-3
+>>> cache = {}
+>>> def cache_big_func(x):
+	if x in cache:
+		return cache[x]
+	else:
+		result = big_func(x)
+		cache[x] = result
+		return result
+
+	
+>>> cache_big_func(3)
+-3
+>>> cache_big_func(3)
+-3
+>>> cache
+{3: -3}
+>>> orig_func = big_func
+>>> def cache_big_func(x):
+	if x in cache:
+		return cache[x]
+	else:
+		result = orig_func(x)
+		cache[x] = result
+		return result
+
+	
+>>> big_func = cache_big_func
+>>> big_func(3)
+-3
+>>> big_func(4)
+-4
+>>> big_func(4)
+-4
+>>> cache
+{3: -3, 4: -4}
+>>> 
