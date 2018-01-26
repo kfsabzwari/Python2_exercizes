@@ -688,4 +688,674 @@ inside test
 >>> m
 [0, 1, 2, [...]]
 >>> del m
+>>> m = []
+>>> k = m
+>>> del m
+>>> import os
+>>> dir(os.path)
+['__all__', '__builtins__', '__doc__', '__file__', '__name__', '__package__', '_joinrealpath', '_unicode', '_uvarprog', '_varprog', 'abspath', 'altsep', 'basename', 'commonprefix', 'curdir', 'defpath', 'devnull', 'dirname', 'exists', 'expanduser', 'expandvars', 'extsep', 'genericpath', 'getatime', 'getctime', 'getmtime', 'getsize', 'isabs', 'isdir', 'isfile', 'islink', 'ismount', 'join', 'lexists', 'normcase', 'normpath', 'os', 'pardir', 'pathsep', 'realpath', 'relpath', 'samefile', 'sameopenfile', 'samestat', 'sep', 'split', 'splitdrive', 'splitext', 'stat', 'supports_unicode_filenames', 'sys', 'walk', 'warnings']
+>>> help(os.path.dirname)
+Help on function dirname in module posixpath:
+
+dirname(p)
+    Returns the directory component of a pathname
+
+>>> os.getcwd()
+'/Users/grantj/Dropbox/Class22012018'
+>>> cwd = os.getcwd()
+>>> help(os.path.join)
+Help on function join in module posixpath:
+
+join(a, *p)
+    Join two or more pathname components, inserting '/' as needed.
+    If any component is an absolute path, all previous path components
+    will be discarded.  An empty last part will result in a path that
+    ends with a separator.
+
+>>> os.path.join(cwd, 'notes', 'links.txt')
+'/Users/grantj/Dropbox/Class22012018/notes/links.txt'
+>>> links = _
+>>> os.path.isfile(links)
+True
+>>> os.path.isfile(cwd)
+False
+>>> os.path.isdir(cwd)
+True
+>>> os.path.basename(links)
+'links.txt'
+>>> links
+'/Users/grantj/Dropbox/Class22012018/notes/links.txt'
+>>> os.path.split(links)
+('/Users/grantj/Dropbox/Class22012018/notes', 'links.txt')
+>>> os.path.split(cwd)
+('/Users/grantj/Dropbox', 'Class22012018')
+>>> os.path.splitext(links)
+('/Users/grantj/Dropbox/Class22012018/notes/links', '.txt')
+>>> with open('temp.txt', 'w'):
+	
+KeyboardInterrupt
+>>> with open('temp.txt', 'w') as f:
+	f.write('Hello world!\n')
+
+	
+>>> with open('temp.txt') as f:
+	print f.read()
+
+	
+Hello world!
+
+>>> with open('temp.txt', 'a') as f:
+	f.write('A second line\n')
+
+	
+>>> with open('temp.txt') as f:
+	print f.read()
+
+	
+Hello world!
+A second line
+
+>>> with open('temp.txt', 'r+') as f:
+	print f.readline()
+	print t.tell()
+
+	
+Hello world!
+
+
+Traceback (most recent call last):
+  File "<pyshell#307>", line 3, in <module>
+    print t.tell()
+NameError: name 't' is not defined
+>>> with open('temp.txt', 'r+') as f:
+	print f.readline()
+	print f.tell()
+
+	
+Hello world!
+
+13
+>>> with open('temp.png', 'wb') as image:
+	image.write('some image png siganture')
+
+	
+>>> os.remove('temp.png')
+>>> os.remove('temp.txt')
+>>> os.remove('temp.txt')
+
+Traceback (most recent call last):
+  File "<pyshell#315>", line 1, in <module>
+    os.remove('temp.txt')
+OSError: [Errno 2] No such file or directory: 'temp.txt'
+>>> os.mkdir('temp')
+>>> os.rmdir('temp')
+>>> os.rmdir('temp')
+
+Traceback (most recent call last):
+  File "<pyshell#318>", line 1, in <module>
+    os.rmdir('temp')
+OSError: [Errno 2] No such file or directory: 'temp'
+>>> 
+>>> # paths: dirname  basename  split  splitext  join
+>>> # Operating system independent! Yay.
+>>> # remove() mkdir() rmdir() (raise OSError when fail)
+>>> # open(fn) open(fn, 'w')   (raise IOError when fail)
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/filedict.py ==========
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/filedict.py", line 24, in <module>
+    d = FileDict('jenks')
+  File "/Users/grantj/Dropbox/Class22012018/filedict.py", line 12, in __init__
+    os.mkdir(dirname)
+NameError: global name 'os' is not defined
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/filedict.py ==========
+>>> d['grant']
+
+Traceback (most recent call last):
+  File "<pyshell#324>", line 1, in <module>
+    d['grant']
+  File "/Users/grantj/Dropbox/Class22012018/filedict.py", line 23, in __getitem__
+    raise KeyError(key)
+KeyError: 'grant'
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/filedict.py ==========
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/filedict.py", line 31, in <module>
+    d = FileDict('jenks')
+  File "/Users/grantj/Dropbox/Class22012018/filedict.py", line 14, in __init__
+    os.mkdir(dirname)
+OSError: [Errno 17] File exists: 'jenks'
+>>> os.mkdir('jenks')
+
+Traceback (most recent call last):
+  File "<pyshell#325>", line 1, in <module>
+    os.mkdir('jenks')
+OSError: [Errno 17] File exists: 'jenks'
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/filedict.py ==========
+>>> d['grant'] = 'orange'
+>>> d['shannon'] = 'green'
+>>> d['bethany'] = 'pink'
+>>> d['shannon']
+'green'
+>>> os.listdir('jenks')
+['bethany', 'grant', 'shannon']
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/filedict.py ==========
+FileDict(dirname='jenks')
+orange
+no mark key
+2
+['bethany', 'grant']
+>>> d = dict()
+>>> dir(d)
+['__class__', '__cmp__', '__contains__', '__delattr__', '__delitem__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'clear', 'copy', 'fromkeys', 'get', 'has_key', 'items', 'iteritems', 'iterkeys', 'itervalues', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values', 'viewitems', 'viewkeys', 'viewvalues']
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/filedict.py ==========
+FileDict(dirname='jenks')
+orange
+no mark key
+2
+['bethany', 'grant']
+>>> d.get('mark', '')
+''
+>>> d.keys()
+['bethany', 'grant']
+>>> 'bethany' in d
+True
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/filedict.py ==========
+FileDict(dirname='jenks')
+orange
+no mark key
+2
+['bethany', 'grant']
+>>> d.keys()
+['bethany', 'grant']
+>>> d['mark']
+'blue'
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/filedict.py ==========
+FileDict(dirname='jenks')
+orange
+blue
+3
+['bethany', 'grant', 'mark']
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/filedict.py", line 68, in <module>
+    print d.pop('shannon')
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_abcoll.py", line 519, in pop
+    value = self[key]
+  File "/Users/grantj/Dropbox/Class22012018/filedict.py", line 27, in __getitem__
+    raise KeyError(key)
+KeyError: 'shannon'
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/filedict.py ==========
+FileDict(dirname='jenks')
+orange
+
+3
+['bethany', 'grant', 'mark']
+
+True
+white
+>>> lastname = 'Simpsons'
+>>> first_names = ['Homer', 'Marge', 'Bart', 'Lisa', 'Maggie']
+>>> print 'The %s Family' % lastname
+The Simpsons Family
+>>> print '=' * 23
+=======================
+>>> print '=' * 20
+====================
+>>> for name in first_names:
+	print '* %s' % name
+
+	
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+>>> help(show_family)
+Help on function show_family in module __main__:
+
+show_family(lastname, first_names)
+    Display the family members in a nice tabular format.
+
+>>> import dis
+>>> dis.dis(show_family)
+ 12           0 LOAD_CONST               1 ('The %s Family')
+              3 LOAD_FAST                0 (lastname)
+              6 BINARY_MODULO       
+              7 PRINT_ITEM          
+              8 PRINT_NEWLINE       
+
+ 13           9 LOAD_CONST               2 ('=')
+             12 LOAD_CONST               3 (11)
+             15 LOAD_GLOBAL              0 (len)
+             18 LOAD_FAST                0 (lastname)
+             21 CALL_FUNCTION            1
+             24 BINARY_ADD          
+             25 BINARY_MULTIPLY     
+             26 PRINT_ITEM          
+             27 PRINT_NEWLINE       
+
+ 14          28 SETUP_LOOP              23 (to 54)
+             31 LOAD_FAST                1 (first_names)
+             34 GET_ITER            
+        >>   35 FOR_ITER                15 (to 53)
+             38 STORE_FAST               2 (name)
+
+ 15          41 LOAD_CONST               4 ('* %s')
+             44 LOAD_FAST                2 (name)
+             47 BINARY_MODULO       
+             48 PRINT_ITEM          
+             49 PRINT_NEWLINE       
+             50 JUMP_ABSOLUTE           35
+        >>   53 POP_BLOCK           
+        >>   54 LOAD_CONST               5 (None)
+             57 RETURN_VALUE        
+>>> print 'Hello world!'
+Hello world!
+>>> import sys
+>>> sys.stdout.write('Hello world!')
+Hello world!
+>>> orig_stdout = sys.stdout
+>>> f = open('temp.txt', 'w')
+>>> sys.stdout = f
+>>> print 'Hello world!'
+>>> print 'Second line'
+>>> print 'Last message'
+>>> sys.stdout = orig_stdout
+>>> print 'Hello world!'
+Hello world!
+>>> f.close()
+>>> with open('temp.txt') as reader:
+	print reader.read()
+
+	
+Hello world!
+Second line
+Last message
+
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/redirect.py", line 22, in <module>
+    show_family('Simpsons', ['Homer', 'Marge', 'Bart', 'Lisa', 'Maggie'])
+  File "/Users/grantj/Dropbox/Class22012018/redirect.py", line 15, in show_family
+    print '=' * (11 + len(lastname_foo))
+NameError: global name 'lastname_foo' is not defined
+>>> print 'Hello world!'
+Hello world!
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/redirect.py", line 23, in <module>
+    show_family('Simpsons', ['Homer', 'Marge', 'Bart', 'Lisa', 'Maggie'])
+  File "/Users/grantj/Dropbox/Class22012018/redirect.py", line 15, in show_family
+    print '=' * (11 + len(lastname_foo))
+NameError: global name 'lastname_foo' is not defined
+>>> print 'Hello world!'
+Hello world!
+>>> help(show_family)
+Help on function show_family in module __main__:
+
+show_family(lastname, first_names)
+    Display the family members in a nice tabular format.
+
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+HELP ON FUNCTION SHOW_FAMILY IN MODULE __MAIN__:
+
+SHOW_FAMILY(LASTNAME, FIRST_NAMES)
+    DISPLAY THE FAMILY MEMBERS IN A NICE TABULAR FORMAT.
+
+
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/redirect.py", line 45, in <module>
+    os.remove('show_family.help.txt')
+NameError: name 'os' is not defined
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+HELP ON FUNCTION SHOW_FAMILY IN MODULE __MAIN__:
+
+SHOW_FAMILY(LASTNAME, FIRST_NAMES)
+    DISPLAY THE FAMILY MEMBERS IN A NICE TABULAR FORMAT.
+
+
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+HELP ON FUNCTION SHOW_FAMILY IN MODULE __MAIN__:
+
+SHOW_FAMILY(LASTNAME, FIRST_NAMES)
+    DISPLAY THE FAMILY MEMBERS IN A NICE TABULAR FORMAT.
+
+
+DONE
+>>> print 'Hello world!'
+Hello world!
+>>> with open('dis.txt') as reader:
+	print reader.read()[:200]
+
+	
+ 16           0 LOAD_CONST               1 ('The %s Family')
+              3 LOAD_FAST                0 (lastname)
+              6 BINARY_MODULO       
+              7 PRINT_ITEM          
+           
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+HELP ON FUNCTION SHOW_FAMILY IN MODULE __MAIN__:
+
+SHOW_FAMILY(LASTNAME, FIRST_NAMES)
+    DISPLAY THE FAMILY MEMBERS IN A NICE TABULAR FORMAT.
+
+
+DONE
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+HELP ON FUNCTION SHOW_FAMILY IN MODULE __MAIN__:
+
+SHOW_FAMILY(LASTNAME, FIRST_NAMES)
+    DISPLAY THE FAMILY MEMBERS IN A NICE TABULAR FORMAT.
+
+
+DONE
+>>> help(issubclass)
+Help on built-in function issubclass in module __builtin__:
+
+issubclass(...)
+    issubclass(C, B) -> bool
+    
+    Return whether class C is a subclass (i.e., a derived class) of class B.
+    When using a tuple as the second argument issubclass(X, (A, B, ...)),
+    is a shortcut for issubclass(X, A) or issubclass(X, B) or ... (etc.).
+
+>>> issubclass(bool, int)
+True
+>>> issubclass(list, tuple)
+False
+>>> from collections import Sequence
+>>> issubclass(list, Sequence)
+True
+>>> issubclass(tuple, Sequence)
+True
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+HELP ON FUNCTION SHOW_FAMILY IN MODULE __MAIN__:
+
+SHOW_FAMILY(LASTNAME, FIRST_NAMES)
+    DISPLAY THE FAMILY MEMBERS IN A NICE TABULAR FORMAT.
+
+
+DONE
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+HELP ON FUNCTION SHOW_FAMILY IN MODULE __MAIN__:
+
+SHOW_FAMILY(LASTNAME, FIRST_NAMES)
+    DISPLAY THE FAMILY MEMBERS IN A NICE TABULAR FORMAT.
+
+
+DONE
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+HELP ON FUNCTION SHOW_FAMILY IN MODULE __MAIN__:
+
+SHOW_FAMILY(LASTNAME, FIRST_NAMES)
+    DISPLAY THE FAMILY MEMBERS IN A NICE TABULAR FORMAT.
+
+
+DONE
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+HELP ON FUNCTION SHOW_FAMILY IN MODULE __MAIN__:
+
+SHOW_FAMILY(LASTNAME, FIRST_NAMES)
+    DISPLAY THE FAMILY MEMBERS IN A NICE TABULAR FORMAT.
+
+
+DONE
+>>> import StringIO
+>>> s = StringIO.StringIO()
+>>> s.write('Hello World\n')
+>>> s.write('A Second Line\n')
+>>> s.write('Finished\n')
+>>> dir(s)
+['__doc__', '__init__', '__iter__', '__module__', 'buf', 'buflist', 'close', 'closed', 'flush', 'getvalue', 'isatty', 'len', 'next', 'pos', 'read', 'readline', 'readlines', 'seek', 'softspace', 'tell', 'truncate', 'write', 'writelines']
+>>> help(s.getvalue)
+Help on method getvalue in module StringIO:
+
+getvalue(self) method of StringIO.StringIO instance
+    Retrieve the entire contents of the "file" at any time before
+    the StringIO object's close() method is called.
+    
+    The StringIO object can accept either Unicode or 8-bit strings,
+    but mixing the two may take some care. If both are used, 8-bit
+    strings that cannot be interpreted as 7-bit ASCII (that use the
+    8th bit) will cause a UnicodeError to be raised when getvalue()
+    is called.
+
+>>> s.getvalue()
+'Hello World\nA Second Line\nFinished\n'
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+HELP ON FUNCTION SHOW_FAMILY IN MODULE __MAIN__:
+
+SHOW_FAMILY(LASTNAME, FIRST_NAMES)
+    DISPLAY THE FAMILY MEMBERS IN A NICE TABULAR FORMAT.
+
+
+DONE
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+HELP ON FUNCTION SHOW_FAMILY IN MODULE __MAIN__:
+
+SHOW_FAMILY(LASTNAME, FIRST_NAMES)
+    DISPLAY THE FAMILY MEMBERS IN A NICE TABULAR FORMAT.
+
+
+DONE
+>>> s
+'Help on function show_family in module __main__:\n\nshow_family(lastname, first_names)\n    Display the family members in a nice tabular format.\n\n'
+>>> with s:
+	pass
+
+
+Traceback (most recent call last):
+  File "<pyshell#388>", line 1, in <module>
+    with s:
+AttributeError: __exit__
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/redirect.py", line 50, in <module>
+    with StringIO() as s:
+AttributeError: StringIO instance has no attribute '__exit__'
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+
+Traceback (most recent call last):
+  File "/Users/grantj/Dropbox/Class22012018/redirect.py", line 64, in <module>
+    print s.getvalue().upper()
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/StringIO.py", line 269, in getvalue
+    _complain_ifclosed(self.closed)
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/StringIO.py", line 40, in _complain_ifclosed
+    raise ValueError, "I/O operation on closed file"
+ValueError: I/O operation on closed file
+>>> 
+========== RESTART: /Users/grantj/Dropbox/Class22012018/redirect.py ==========
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+HELP ON FUNCTION SHOW_FAMILY IN MODULE __MAIN__:
+
+SHOW_FAMILY(LASTNAME, FIRST_NAMES)
+    DISPLAY THE FAMILY MEMBERS IN A NICE TABULAR FORMAT.
+
+
+DONE
+The Simpsons Family
+===================
+* Homer
+* Marge
+* Bart
+* Lisa
+* Maggie
+HELP ON FUNCTION SHOW_FAMILY IN MODULE __MAIN__:
+
+SHOW_FAMILY(LASTNAME, FIRST_NAMES)
+    DISPLAY THE FAMILY MEMBERS IN A NICE TABULAR FORMAT.
+
+
+DONE
+>>> import urllib
+>>> con = urllib.urlopen('https://www.python.org/')
+>>> data = con.read()
+>>> con.close()
+>>> with Closing(urllib.urlopen('https://www.python.org/')):
+	data = con.read()
+
+	
+
+Traceback (most recent call last):
+  File "<pyshell#395>", line 2, in <module>
+    data = con.read()
+TypeError: 'NoneType' object is not callable
+>>> with Closing(urllib.urlopen('https://www.python.org/')) as con:
+	data = con.read()
+
+	
 >>> 
